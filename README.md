@@ -1,6 +1,6 @@
 # bill-scanner
 Bill scanner application for School project
 
-#Kinvey account
+# Kinvey account
 email: v_l_a_d_i2@abv.bg
 password: BillScanner
