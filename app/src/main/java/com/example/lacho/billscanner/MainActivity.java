@@ -5,10 +5,13 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.googlecode.tesseract.android.TessBaseAPI;
+import com.kinvey.android.Client;
+import com.kinvey.android.callback.KinveyPingCallback;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +21,20 @@ public class MainActivity extends AppCompatActivity {
     Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //WIP -> create client and then check connectivity
+        final Client mKinveyClient = new Client.Builder("", "", this.getApplicationContext()).build();
+
+        mKinveyClient.ping(new KinveyPingCallback() {
+            public void onFailure(Throwable t) {
+                Log.e("", "Kinvey Ping Failed", t);
+            }
+            public void onSuccess(Boolean b) {
+                Log.d("", "Kinvey Ping Success");
+            }
+        });
+        //END OF WIP
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
