@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("", "Kinvey Ping Success");
             }
         });
+        //wIP -> end
 
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
