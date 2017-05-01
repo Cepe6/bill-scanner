@@ -21,8 +21,6 @@ import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity {
 
     Bitmap image;
-    private TessBaseAPI mTess;
-    String datapath = "";
     Button button;
 
     @Override
@@ -74,12 +72,6 @@ public class MainActivity extends AppCompatActivity {
 
         button = (Button) findViewById(R.id.button);
 
-        String language = "eng";
-        datapath = getFilesDir()+ "/tesseract/";
-        mTess = new TessBaseAPI();
-
-        mTess.init(datapath, language);
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,11 +86,10 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         image = (Bitmap) data.getExtras().get("data");
         String OCRresult = null;
-
-        mTess.setImage(image);
-        OCRresult = mTess.getUTF8Text();
+        TessOCR tessOCR = new TessOCR(getFilesDir());
+        OCRresult = tessOCR.getResult(image);
 
         button.setText(OCRresult);
-
+        tessOCR.onDestroy();
     }
 }
