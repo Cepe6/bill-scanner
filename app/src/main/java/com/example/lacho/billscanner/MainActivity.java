@@ -25,15 +25,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
         //WIP -> create client and then check connectivity
         final Client mKinveyClient = new Client.Builder(getString(R.string.app_key),
                 getString(R.string.app_secret),
                 this.getApplicationContext()).build();
-
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         mKinveyClient.ping(new KinveyPingCallback() {
             public void onFailure(Throwable t) {
@@ -44,34 +42,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        //END OF WIP
-        Bills bills = new Bills();
-        bills.setTotalPrice(4.4D);
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject = new JSONObject("{\"phonetype\":\"N95\",\"cat\":\"WP\"}");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        bills.setBill(jsonObject);
-
-        AsyncAppData<Bills> myevents = mKinveyClient.appData("bills", Bills.class);
-        myevents.save(bills, new KinveyClientCallback<Bills>() {
-            @Override
-            public void onFailure(Throwable e) {
-                Log.e("TAG", "failed to save event data", e);
-            }
-
-            @Override
-            public void onSuccess(Bills b) {
-                Log.d("TAG", "saved data for entity " + b.toString());
-            }
-        });
-        mKinveyClient.query();
-
         button = (Button) findViewById(R.id.button);
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

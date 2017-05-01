@@ -15,7 +15,7 @@ public class Bills extends GenericJson { // For Serialization
     @Key("_id")
     private String id;
     @Key
-    private JSONObject bill;
+    private String bill;
     @Key
     private double totalPrice;
     @Key("_kmd")
@@ -24,10 +24,9 @@ public class Bills extends GenericJson { // For Serialization
     private KinveyMetaData.AccessControlList acl; //Kinvey access control, OPTIONAL
 
 
-    public Bills() {
-    }  //GenericJson classes must have a public empty constructor
+    public Bills() {}  //GenericJson classes must have a public empty constructor
 
-    public void setBill(JSONObject bill) {
+    public void setBill(String bill) {
         this.bill = bill;
     }
 
