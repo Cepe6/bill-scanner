@@ -2,20 +2,43 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context="com.example.lacho.billscanner.MainActivity">
 
-                <Button
-                    android:id="@+id/button"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:text="Take a picture"></Button>
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Take a picture"
+        tools:layout_editor_absoluteY="447dp"
+        tools:layout_editor_absoluteX="126dp" />
 
 
+    <ImageView
+        android:id="@+id/picture"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:layout_margin="5dp"
+        tools:layout_editor_absoluteY="300dp"
+        tools:layout_editor_absoluteX="0dp" />
 
 
+    <com.theartofdev.edmodo.cropper.CropImageView
+        xmlns:custom="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cropImageView"
+        android:layout_width="500dp"
+        android:layout_height="200dp"
+        android:layout_weight="1"
+        tools:layout_editor_absoluteY="500dp"
+        tools:layout_editor_absoluteX="50dp" />
 
-
+    <Button
+        android:id="@+id/ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        tools:layout_editor_absoluteY="400dp"
+        tools:layout_editor_absoluteX="10dp" />
 </android.support.constraint.ConstraintLayout>

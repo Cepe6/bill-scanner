@@ -1,6 +1,7 @@
 package com.example.lacho.billscanner;
 
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.util.Log;
 
 import com.googlecode.tesseract.android.TessBaseAPI;
@@ -18,14 +19,17 @@ class TessOCR {
         this.mTess = new TessBaseAPI();
 
         String language = "eng";
-        String datapath = filesDir + "/tesseract/";
-
+        String datapath;
+        Uri path = Uri.parse("file:///android_assets/");
+        datapath = path.toString();
         try {
             mTess.init(datapath, language);
         } catch (Exception e) {
             Log.e("Tesseract Init", e.toString());
         }
     }
+
+
 
     public String getResult(Bitmap bitmap) {
         mTess.setImage(bitmap);
