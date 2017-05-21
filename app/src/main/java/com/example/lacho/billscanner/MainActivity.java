@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.googlecode.tesseract.android.TessBaseAPI;
 import com.kinvey.android.AsyncAppData;
@@ -34,7 +35,7 @@ import java.io.InputStream;
 public class MainActivity extends AppCompatActivity {
 
     Bitmap image;
-    Button button;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,10 @@ public class MainActivity extends AppCompatActivity {
         });
         //wIP -> end
 
-        button = (Button) findViewById(R.id.button);
+        textView = (TextView) findViewById(R.id.textArea);
+        textView.setText("Default text");
+
+        Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,7 +80,13 @@ public class MainActivity extends AppCompatActivity {
         String OCRresult;
         TessOCR tessOCR = new TessOCR(getDirPath());
         OCRresult = tessOCR.getResult(image);
-        button.setText(OCRresult);
+
+        if (OCRresult.equals(null)) {
+            textView.setText("Result is null");
+        } else {
+            textView.setText(OCRresult);
+        }
+
         tessOCR.onDestroy();
 
         Button ok = (Button) findViewById(R.id.ok);

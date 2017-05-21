@@ -16,8 +16,8 @@
         tools:layout_editor_absoluteX="126dp" />
 
 
-    <ImageView
-        android:id="@+id/picture"
+    <TextView
+        android:id="@+id/textArea"
         android:layout_width="120dp"
         android:layout_height="100dp"
         android:layout_margin="5dp"
