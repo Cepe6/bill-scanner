@@ -77,14 +77,14 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         image = (Bitmap) data.getExtras().get("data");
 
-        String OCRresult;
+        String ocrResult;
         TessOCR tessOCR = new TessOCR(getDirPath());
-        OCRresult = tessOCR.getResult(image);
+        ocrResult = tessOCR.getResult(image);
 
-        if (OCRresult.equals(null)) {
+        if (ocrResult.equals(null)) {
             textView.setText("Result is null");
         } else {
-            textView.setText(OCRresult);
+            textView.setText(ocrResult);
         }
 
         tessOCR.onDestroy();
