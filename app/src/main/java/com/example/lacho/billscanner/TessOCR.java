@@ -1,5 +1,6 @@
 package com.example.lacho.billscanner;
 
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.util.Log;
@@ -7,6 +8,7 @@ import android.util.Log;
 import com.googlecode.tesseract.android.TessBaseAPI;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by lacho on 5/1/17.
@@ -15,21 +17,16 @@ import java.io.File;
 class TessOCR {
     private TessBaseAPI mTess;
 
-    public TessOCR(File filesDir) {
+    public TessOCR(String fileDir) {
         this.mTess = new TessBaseAPI();
-
         String language = "eng";
-        String datapath;
-        Uri path = Uri.parse("file:///android_assets/");
-        datapath = path.toString();
+
         try {
-            mTess.init(datapath, language);
+            mTess.init(fileDir, language);
         } catch (Exception e) {
             Log.e("Tesseract Init", e.toString());
         }
     }
-
-
 
     public String getResult(Bitmap bitmap) {
         mTess.setImage(bitmap);

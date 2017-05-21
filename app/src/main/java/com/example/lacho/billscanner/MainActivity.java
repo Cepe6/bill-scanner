@@ -1,8 +1,10 @@
 package com.example.lacho.billscanner;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -23,6 +25,11 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -66,16 +73,15 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         image = (Bitmap) data.getExtras().get("data");
 
-        String OCRresult = null;
-        TessOCR tessOCR = new TessOCR(getFilesDir());
+        String OCRresult;
+        TessOCR tessOCR = new TessOCR(getDirPath());
         OCRresult = tessOCR.getResult(image);
-
         button.setText(OCRresult);
         tessOCR.onDestroy();
+
         Button ok = (Button) findViewById(R.id.ok);
         ok.setVisibility(View.VISIBLE);
         selectCropImage();
-
     }
 
     private void selectCropImage() {
@@ -91,5 +97,23 @@ public class MainActivity extends AppCompatActivity {
                 ok.setVisibility(View.GONE);
             }
         });
+    }
+
+    private String getDirPath() {
+        File f = new File(getCacheDir() + "/tesseract/");
+        if (!f.exists()) try {
+
+            InputStream is = getAssets().open("tesseract/tessdata/eng.traineddata");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+
+            FileOutputStream fos = new FileOutputStream(f);
+            fos.write(buffer);
+            fos.close();
+        } catch (Exception e) { Log.e("error", e.toString()); }
+
+        return f.getPath();
     }
 }
