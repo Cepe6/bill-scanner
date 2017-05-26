@@ -20,6 +20,9 @@ import com.googlecode.tesseract.android.TessBaseAPI;
 import com.kinvey.android.AsyncAppData;
 import com.kinvey.android.Client;
 import com.kinvey.android.callback.KinveyPingCallback;
+import com.kinvey.android.callback.KinveyUserCallback;
+import com.kinvey.java.User;
+import com.kinvey.java.auth.Credential;
 import com.kinvey.java.core.KinveyClientCallback;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     Bitmap image;
     TextView textView;
+    Client mKinveyClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         Button ok = (Button) findViewById(R.id.ok);
         ok.setVisibility(View.INVISIBLE);
         //WIP -> create client and then check connectivity
-        final Client mKinveyClient = new Client.Builder(getString(R.string.app_key),
+        mKinveyClient = new Client.Builder(getString(R.string.app_key),
                 getString(R.string.app_secret),
                 this.getApplicationContext()).build();
 
@@ -60,7 +64,17 @@ public class MainActivity extends AppCompatActivity {
         });
         //WIP -> end
 
-        mKinveyClient.user().login(); //TODO INSERT USER CREDENTIALS
+        mKinveyClient.user().login(new KinveyUserCallback() {
+            @Override
+            public void onSuccess(User user) {
+                Log.e("Success", "Logged in with id: " + user.getId());
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                Log.e("Failure", "Could not login");
+            }
+        });
 
         RecordData recordData = new RecordData(mKinveyClient);
 

@@ -16,11 +16,14 @@
         android:text="Take a picture"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="16dp"
-        app:layout_constraintHorizontal_bias="0.966" />
+        app:layout_constraintHorizontal_bias="0.855"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/textArea"
+        app:layout_constraintVertical_bias="0.516" />
 
 
     <TextView
@@ -62,7 +65,14 @@
         android:layout_width="129dp"
         android:layout_height="47dp"
         android:text="Account"
-        tools:layout_editor_absoluteX="11dp"
-        tools:layout_editor_absoluteY="16dp"
-        android:onClick="changeToAcc"/>
+        android:onClick="changeToAcc"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.138"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/textArea"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp" />
 </android.support.constraint.ConstraintLayout>

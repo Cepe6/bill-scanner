@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">BillScanner</string>
     <string name="take_a_picture">Take a picture</string>
-    <string name="app_key">kid_BJOZFbKAx</string>
-    <string name="app_secret">7386b05a10204b61a2d770abb8dba54c</string>
+    <string name="app_key">kid_S1hTI48Wb</string>
+    <string name="app_secret">0ac0cff45fc14f7281c6bfd2276a36d6</string>
     <string name="picture" />
+    <string name="useremail">vmladenov22@gmail.com</string>
+    <string name="password">bill-scanner</string>
 </resources>

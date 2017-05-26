@@ -3,12 +3,12 @@
 
     <item
         is-multidex="false"
-        jar="/home/cepe6/SchoolProgramming/bill-scanner/app/libs/java-api-core-2.10.12.jar"
+        jar="/home/cepe6/SchoolProgramming/playground/bill-scanner/app/libs/google-http-client-gson-1.19.0.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="b0a0c970280e462eced181acdaa09c25cf782da6">
-        <dex dex="/home/cepe6/SchoolProgramming/bill-scanner/app/build/intermediates/pre-dexed/debug/java-api-core-2.10.12_c779a0c084068d2d55076c70d0323a342a71649e.jar" />
+        sha1="b3cdefb990d5212bb2a130525b20e2c44aeffc4c">
+        <dex dex="/home/cepe6/SchoolProgramming/playground/bill-scanner/app/build/intermediates/pre-dexed/debug/google-http-client-gson-1.19.0_56bc207e7eac9bf1489047318c9020d0322ef20e.jar" />
     </item>
     <item
         is-multidex="false"
@@ -21,15 +21,6 @@
     </item>
     <item
         is-multidex="false"
-        jar="/home/cepe6/SchoolProgramming/bill-scanner/app/libs/gson-2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="2e66da15851f9f5b5079228f856c2f090ba98c38">
-        <dex dex="/home/cepe6/SchoolProgramming/bill-scanner/app/build/intermediates/pre-dexed/debug/gson-2.1_30fc0b4b54b621f806cebb8c676429cef1ae07a1.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/home/cepe6/SchoolProgramming/bill-scanner/app/libs/guava-18.0.jar"
         jumboMode="false"
         optimize="true"
@@ -39,30 +30,21 @@
     </item>
     <item
         is-multidex="false"
-        jar="/home/cepe6/SchoolProgramming/bill-scanner/app/libs/google-http-client-jackson2-1.19.0.jar"
+        jar="/home/cepe6/SchoolProgramming/playground/bill-scanner/app/libs/google-http-client-android-1.19.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e3f11020c2c812112803d252d1392872d3f619c8">
+        <dex dex="/home/cepe6/SchoolProgramming/playground/bill-scanner/app/build/intermediates/pre-dexed/debug/google-http-client-android-1.19.0_d96bce47f06eb3e8a0cf96422d7a22ec1e65b27c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/cepe6/SchoolProgramming/playground/bill-scanner/app/libs/google-http-client-jackson2-1.19.0.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="81dbf9795d387d5e80e55346582d5f2fb81a42eb">
-        <dex dex="/home/cepe6/SchoolProgramming/bill-scanner/app/build/intermediates/pre-dexed/debug/google-http-client-jackson2-1.19.0_b95ef8f626fff13960e742f9f8430dd326808679.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/cepe6/SchoolProgramming/bill-scanner/app/libs/google-http-client-gson-1.19.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b3cdefb990d5212bb2a130525b20e2c44aeffc4c">
-        <dex dex="/home/cepe6/SchoolProgramming/bill-scanner/app/build/intermediates/pre-dexed/debug/google-http-client-gson-1.19.0_1b8f4e2db0179ad6e56c361d4e5c0615687f3a00.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/cepe6/SchoolProgramming/bill-scanner/app/libs/google-http-client-1.19.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="cdca49ad0977c040f603478aa2e16b2775c8fec6">
-        <dex dex="/home/cepe6/SchoolProgramming/bill-scanner/app/build/intermediates/pre-dexed/debug/google-http-client-1.19.0_e01bd9886a694b658a22ce401ad80aaff8af1c9d.jar" />
+        <dex dex="/home/cepe6/SchoolProgramming/playground/bill-scanner/app/build/intermediates/pre-dexed/debug/google-http-client-jackson2-1.19.0_d08464baf9aba96c317e78578e6c2a9bd2be67e2.jar" />
     </item>
     <item
         is-multidex="false"
@@ -90,6 +72,105 @@
         revision="25.0.2"
         sha1="f6c3aed1cdfa21b5c1737c915186ea93a95a58bd">
         <dex dex="/home/cepe6/SchoolProgramming/bill-scanner/app/build/intermediates/pre-dexed/debug/jackson-core-2.1.3_4be10d673f745786c2bbc70aad3300dd5de8c9c8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/cepe6/SchoolProgramming/playground/bill-scanner/app/libs/google-http-client-1.19.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="cdca49ad0977c040f603478aa2e16b2775c8fec6">
+        <dex dex="/home/cepe6/SchoolProgramming/playground/bill-scanner/app/build/intermediates/pre-dexed/debug/google-http-client-1.19.0_31d03d3c54d3f901de78fc8615e88561b2528214.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/cepe6/SchoolProgramming/playground/bill-scanner/app/libs/jackson-core-2.1.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f6c3aed1cdfa21b5c1737c915186ea93a95a58bd">
+        <dex dex="/home/cepe6/SchoolProgramming/playground/bill-scanner/app/build/intermediates/pre-dexed/debug/jackson-core-2.1.3_bee5453a759c3262edaf1184f0760794b9ba22a0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/cepe6/SchoolProgramming/bill-scanner/app/libs/java-api-core-2.10.12.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b0a0c970280e462eced181acdaa09c25cf782da6">
+        <dex dex="/home/cepe6/SchoolProgramming/bill-scanner/app/build/intermediates/pre-dexed/debug/java-api-core-2.10.12_c779a0c084068d2d55076c70d0323a342a71649e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/cepe6/SchoolProgramming/playground/bill-scanner/app/libs/guava-18.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="cce0823396aa693798f8882e64213b1772032b09">
+        <dex dex="/home/cepe6/SchoolProgramming/playground/bill-scanner/app/build/intermediates/pre-dexed/debug/guava-18.0_5d6b5dd971ebc463137ef99845c81c1febdd6c94.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/cepe6/SchoolProgramming/bill-scanner/app/libs/gson-2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2e66da15851f9f5b5079228f856c2f090ba98c38">
+        <dex dex="/home/cepe6/SchoolProgramming/bill-scanner/app/build/intermediates/pre-dexed/debug/gson-2.1_30fc0b4b54b621f806cebb8c676429cef1ae07a1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/cepe6/.android/build-cache/19eec4ff35799ff3337f84ab6c7d8f579865805e/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8a23dd9b93757918e8f4f8f7382418c58a6cee22">
+        <dex dex="/home/cepe6/SchoolProgramming/playground/bill-scanner/app/build/intermediates/pre-dexed/debug/classes_1b7fab60f4a8eb900c1e8cf6ef4b845088c1bd7d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/cepe6/SchoolProgramming/bill-scanner/app/libs/google-http-client-jackson2-1.19.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="81dbf9795d387d5e80e55346582d5f2fb81a42eb">
+        <dex dex="/home/cepe6/SchoolProgramming/bill-scanner/app/build/intermediates/pre-dexed/debug/google-http-client-jackson2-1.19.0_b95ef8f626fff13960e742f9f8430dd326808679.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/cepe6/SchoolProgramming/playground/bill-scanner/app/libs/java-api-core-2.10.12.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b0a0c970280e462eced181acdaa09c25cf782da6">
+        <dex dex="/home/cepe6/SchoolProgramming/playground/bill-scanner/app/build/intermediates/pre-dexed/debug/java-api-core-2.10.12_3b246695071094a2e1df3eceb3a43165f533736e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/cepe6/SchoolProgramming/bill-scanner/app/libs/google-http-client-gson-1.19.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b3cdefb990d5212bb2a130525b20e2c44aeffc4c">
+        <dex dex="/home/cepe6/SchoolProgramming/bill-scanner/app/build/intermediates/pre-dexed/debug/google-http-client-gson-1.19.0_1b8f4e2db0179ad6e56c361d4e5c0615687f3a00.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/cepe6/SchoolProgramming/bill-scanner/app/libs/google-http-client-1.19.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="cdca49ad0977c040f603478aa2e16b2775c8fec6">
+        <dex dex="/home/cepe6/SchoolProgramming/bill-scanner/app/build/intermediates/pre-dexed/debug/google-http-client-1.19.0_e01bd9886a694b658a22ce401ad80aaff8af1c9d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/cepe6/SchoolProgramming/playground/bill-scanner/app/libs/gson-2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2e66da15851f9f5b5079228f856c2f090ba98c38">
+        <dex dex="/home/cepe6/SchoolProgramming/playground/bill-scanner/app/build/intermediates/pre-dexed/debug/gson-2.1_6b8706817982a1f76846aa43bdc8935cf96c6f4b.jar" />
     </item>
 
 </items>
