@@ -31,6 +31,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -58,7 +60,16 @@ public class MainActivity extends AppCompatActivity {
         });
         //WIP -> end
 
+        mKinveyClient.user().login(); //TODO INSERT USER CREDENTIALS
+
         RecordData recordData = new RecordData(mKinveyClient);
+
+        Map<String, String[]> products = new LinkedHashMap<>();
+        products.put("Apple", new String[] {"2", "3.50"});
+        products.put("Milk", new String[] {"1", "1.00"});
+        products.put("Mayo", new String[] {"5", "10.00"});
+        recordData.makeRecord("Billa", products, 14.50);
+
 
         textView = (TextView) findViewById(R.id.textArea);
         textView.setText("Default text");
