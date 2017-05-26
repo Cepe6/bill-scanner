@@ -6,16 +6,20 @@ import com.kinvey.java.model.KinveyMetaData;
 
 import org.json.JSONObject;
 
+import java.util.Map;
+
 /**
  * Created by lacho on 4/29/17.
  */
 
-public class Bills extends GenericJson { // For Serialization
+public class Bill extends GenericJson { // For Serialization
 
     @Key("_id")
     private String id;
     @Key
     private String bill;
+    @Key
+    private Map<String, String[]> products;
     @Key
     private double totalPrice;
     @Key("_kmd")
@@ -24,7 +28,7 @@ public class Bills extends GenericJson { // For Serialization
     private KinveyMetaData.AccessControlList acl; //Kinvey access control, OPTIONAL
 
 
-    public Bills() {}  //GenericJson classes must have a public empty constructor
+    public Bill() {}  //GenericJson classes must have a public empty constructor
 
     public void setBill(String bill) {
         this.bill = bill;
@@ -32,5 +36,21 @@ public class Bills extends GenericJson { // For Serialization
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public String getBill() {
+        return bill;
+    }
+
+    public Map<String, String[]> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Map<String, String[]> products) {
+        this.products = products;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
     }
 }

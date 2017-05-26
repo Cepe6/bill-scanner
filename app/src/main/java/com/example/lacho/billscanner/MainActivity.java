@@ -56,7 +56,9 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("", "Kinvey Ping Success");
             }
         });
-        //wIP -> end
+        //WIP -> end
+
+        RecordData recordData = new RecordData(mKinveyClient);
 
         textView = (TextView) findViewById(R.id.textArea);
         textView.setText("Default text");
@@ -81,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         TessOCR tessOCR = new TessOCR(getDirPath());
         ocrResult = tessOCR.getResult(image);
 
-        if (ocrResult.equals(null)) {
+        if (ocrResult == null) {
             textView.setText("Result is null");
         } else {
             textView.setText(ocrResult);
@@ -91,23 +93,23 @@ public class MainActivity extends AppCompatActivity {
 
         Button ok = (Button) findViewById(R.id.ok);
         ok.setVisibility(View.VISIBLE);
-        selectCropImage();
+        //selectCropImage();
     }
-
-    private void selectCropImage() {
-        final CropImageView cropImageView = (CropImageView) findViewById(R.id.cropImageView);
-        cropImageView.setImageBitmap(image);
-
-        final Button ok = (Button) findViewById(R.id.ok);
-        ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ImageView imageView = (ImageView) findViewById(R.id.picture);
-                imageView.setImageBitmap(cropImageView.getCroppedImage());
-                ok.setVisibility(View.GONE);
-            }
-        });
-    }
+//
+//    private void selectCropImage() {
+//        final CropImageView cropImageView = (CropImageView) findViewById(R.id.cropImageView);
+//        cropImageView.setImageBitmap(image);
+//
+//        final Button ok = (Button) findViewById(R.id.ok);
+//        ok.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ImageView imageView = (ImageView) findViewById(R.id.picture);
+//                imageView.setImageBitmap(cropImageView.getCroppedImage());
+//                ok.setVisibility(View.GONE);
+//            }
+//        });
+//    }
 
     private String getDirPath() {
         File f = new File(getCacheDir() + "/tesseract/");

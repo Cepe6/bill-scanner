@@ -1,15 +1,13 @@
 package com.example.lacho.billscanner;
 
-import android.content.Context;
 import android.util.Log;
 
 import com.kinvey.android.AsyncAppData;
 import com.kinvey.android.Client;
 import com.kinvey.java.core.KinveyClientCallback;
 
-/**
- * Created by lacho on 5/1/17.
- */
+import java.util.Map;
+
 
 public class RecordData {
     private Client mKinveyClient;
@@ -18,20 +16,21 @@ public class RecordData {
         this.mKinveyClient = mKinveyClient;
     }
 
-    public void makeRecord(String bill, Double totalPrice) {
-        Bills bills = new Bills();
-        bills.setBill(bill);
-        bills.setTotalPrice(totalPrice);
+    public void makeRecord(String bill, Map<String, String[]> products, Double totalPrice) {
+        Bill billObj = new Bill();
+        billObj.setBill(bill);
+        billObj.setProducts(products);
+        billObj.setTotalPrice(totalPrice);
 
-        AsyncAppData<Bills> myevents = mKinveyClient.appData("bills", Bills.class);
-        myevents.save(bills, new KinveyClientCallback<Bills>() {
+        AsyncAppData<Bill> myevents = mKinveyClient.appData("bills", Bill.class);
+        myevents.save(billObj, new KinveyClientCallback<Bill>() {
             @Override
             public void onFailure(Throwable e) {
                 Log.e("TAG", "failed to save event data", e);
             }
 
             @Override
-            public void onSuccess(Bills b) {
+            public void onSuccess(Bill b) {
                 Log.d("TAG", "saved data for entity " + b.toString());
             }
         });

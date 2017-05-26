@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="kinvey-android-2.10.12-">
     <CLASSES>
-      <root url="file://$USER_HOME$/.android/build-cache/2d75cc47bfd71bb332f83b59ef9b2bf8e8e9cab5/output/res" />
-      <root url="jar://$USER_HOME$/.android/build-cache/2d75cc47bfd71bb332f83b59ef9b2bf8e8e9cab5/output/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/fd894df79391466b8cdf5868f892c0c82dce6fb7/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/fd894df79391466b8cdf5868f892c0c82dce6fb7/output/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
