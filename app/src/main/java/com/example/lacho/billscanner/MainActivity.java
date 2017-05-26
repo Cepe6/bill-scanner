@@ -73,6 +73,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void changeToAcc(View v) {
+        Intent intent = new Intent(this, AccountActivity.class);
+        startActivity(intent);
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
