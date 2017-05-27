@@ -13,7 +13,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="6dp"
-        android:text="Login"
+        android:text="Sign in"
         android:backgroundTint="@color/customGreen"
         android:textColor="@android:color/white"
         android:textSize="18sp"
@@ -29,7 +29,7 @@
 
     <EditText
         android:id="@+id/login_username"
-        android:layout_width="368dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
@@ -40,13 +40,16 @@
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginStart="8dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/customGreen"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:layout_constraintHorizontal_bias="0.0" />
 
     <EditText
         android:id="@+id/login_password"
-        android:layout_width="368dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
@@ -54,6 +57,9 @@
         android:layout_marginTop="-1dp"
         android:ems="10"
         android:hint="Password"
+        android:backgroundTint="@color/customGreen"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:inputType="textPassword"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_username"

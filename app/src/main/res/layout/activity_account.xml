@@ -60,6 +60,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="Logout"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/customGreen"
         android:onClick="logout"
         tools:layout_editor_absoluteY="513dp"
         tools:layout_editor_absoluteX="212dp" />

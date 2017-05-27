@@ -150,11 +150,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void setAndOutputTess() {
         String ocrResult;
+        TessBaseAPI tessOCR = new TessBaseAPI();
 
         datapath  = getFilesDir() + "/tesseract/";
         checkFile(new File(datapath + "tessdata/"));
 
-        TessBaseAPI tessOCR = new TessBaseAPI();
         tessOCR.init(datapath, language);
         tessOCR.setImage(image);
         ocrResult = tessOCR.getUTF8Text();
