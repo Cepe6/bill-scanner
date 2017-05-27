@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Bitmap image;
     private TextView textView;
-    private Client mKinveyClient;
+    public static Client mKinveyClient = null;
     private String datapath = "";
     private String language = DEFAULT_LANGUAGE;
 
@@ -58,10 +58,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mKinveyClient = new Client.Builder(getString(R.string.app_key),
-                getString(R.string.app_secret),
-                this.getApplicationContext()).build();
-
+        if (mKinveyClient == null) {
+            mKinveyClient = new Client.Builder(getString(R.string.app_key),
+                    getString(R.string.app_secret),
+                    this.getApplicationContext()).build();
+        }
         Log.i("CHECKING", "IS USER LOGGED IN: " + mKinveyClient.user().isUserLoggedIn());
         if(mKinveyClient.user().isUserLoggedIn()) {
                 Log.i("YEP", "User is " + mKinveyClient.user().getUsername());
@@ -85,9 +86,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
         textView = (TextView) findViewById(R.id.textArea);
 
         Button button = (Button) findViewById(R.id.button);
@@ -98,6 +96,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, 0);
             }
         });
+    }
+
+    public static Client getmKinveyClient() {
+        return mKinveyClient;
     }
 
     public void onRadioButtonClicked(View view) {
@@ -154,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
 
         tessOCR.clear();
     }
-
+/*Working fine
     private void selectCropImage() {
         final CropImageView cropImageView = (CropImageView) findViewById(R.id.cropImageView);
         cropImageView.setVisibility(View.VISIBLE);
@@ -170,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+*/
     private void copyFiles() {
         try {
             //location we want the file to be at

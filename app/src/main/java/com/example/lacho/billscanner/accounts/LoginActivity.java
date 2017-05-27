@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.lacho.billscanner.MainActivity;
 import com.example.lacho.billscanner.R;
@@ -16,9 +17,6 @@ import com.kinvey.java.User;
 
 import java.io.IOException;
 
-/**
- * Created by cepe6 on 27.05.17.
- */
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -29,10 +27,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void tryLogin(View v) throws IOException {
-        Client mKinveyClient = new Client.Builder(getString(R.string.app_key),
-                getString(R.string.app_secret),
-                this.getApplicationContext()).build();
-
         EditText usernameEdit = (EditText)findViewById(R.id.login_username);
         EditText passwordEdit = (EditText)findViewById(R.id.login_password);
         if(usernameEdit == null || passwordEdit == null) {
@@ -40,16 +34,20 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             final String username = usernameEdit.getText().toString();
             String password = passwordEdit.getText().toString();
-            mKinveyClient.user().login(username, password, new KinveyUserCallback() {
+            MainActivity.getmKinveyClient().user().login(username, password, new KinveyUserCallback() {
                 @Override
                 public void onSuccess(User user) {
                     Log.i("Success", "Logged in with user " + user.getUsername());
+                    CharSequence text = "Welcome back, " + user.getUsername() + ".";
+                    Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
                     finish();
                 }
 
                 @Override
                 public void onFailure(Throwable throwable) {
                     Log.i("Failure", "Could not login");
+                    CharSequence text = "Houston, we have a problem!";
+                    Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
                 }
             });
         }

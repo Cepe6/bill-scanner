@@ -18,29 +18,24 @@ import com.kinvey.android.callback.KinveyListCallback;
 import java.util.Map;
 
 public class AccountActivity extends AppCompatActivity {
-    private Client mKinveyClient;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.i("Tag", "created");
         setContentView(R.layout.activity_account);
-        mKinveyClient = new Client.Builder(getString(R.string.app_key),
-                getString(R.string.app_secret),
-                this.getApplicationContext()).build();
 
         TextView usernameArea = (TextView) findViewById(R.id.username);
-        usernameArea.setText(mKinveyClient.user().getId());
+        usernameArea.setText(MainActivity.getmKinveyClient().user().getId());
 
-        Log.i("Check", mKinveyClient.user().toString());
+        Log.i("Check", MainActivity.getmKinveyClient().user().toString());
 
-        AsyncAppData<Bill> events = mKinveyClient.appData("bills", Bill.class);
+        AsyncAppData<Bill> events = MainActivity.getmKinveyClient().appData("bills", Bill.class);
         events.get(new KinveyListCallback<Bill>() {
             @Override
             public void onSuccess(Bill[] bills) {
                 String billsOutput = "{\n ";
                 for (Bill bill : bills) {
-                    if(bill.getOwnerID().equals(mKinveyClient.user().getId())) {
+                    if(bill.getOwnerID().equals(MainActivity.getmKinveyClient().user().getId())) {
                         billsOutput += "\tbill {\n\t\tname: " + bill.getBill() + ", \n\t\tproducts: [";
                         for (Map.Entry<String,String[]> stringEntry : bill.getProducts().entrySet()) {
                             billsOutput += "\n\t\t\t" + stringEntry.getKey() + " {\n\t\t\t\tamount: " + stringEntry.getValue()[0] + "\n\t\t\t\tprice: " + stringEntry.getValue()[1] + "\n\t\t\t}";
@@ -77,7 +72,7 @@ public class AccountActivity extends AppCompatActivity {
     }
 
     public void logout(View view) {
-        mKinveyClient.user().logout();
+        MainActivity.getmKinveyClient().user().logout().execute();
         startActivity(new Intent(this, LoginActivity.class));
     }
 }

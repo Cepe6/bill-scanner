@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.lacho.billscanner.MainActivity;
 import com.example.lacho.billscanner.R;
@@ -19,8 +20,6 @@ import com.kinvey.java.User;
  */
 
 public class RegisterActivity extends AppCompatActivity {
-    private Client mKinveyClient;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,10 +27,6 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void createUser(View view) {
-        Client mKinveyClient = new Client.Builder(getString(R.string.app_key),
-                getString(R.string.app_secret),
-                this.getApplicationContext()).build();
-
         EditText usernameEdit = (EditText)findViewById(R.id.register_username);
         EditText passwordEdit = (EditText)findViewById(R.id.register_password);
         if(usernameEdit == null || passwordEdit == null) {
@@ -39,16 +34,20 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             final String username = usernameEdit.getText().toString();
             String password = passwordEdit.getText().toString();
-            mKinveyClient.user().create(username, password, new KinveyUserCallback() {
+            MainActivity.getmKinveyClient().user().create(username, password, new KinveyUserCallback() {
                 @Override
                 public void onSuccess(User user) {
                     Log.v("Success", "Registered user with id " + user.getId());
+                    CharSequence text = user.getUsername() + ", your account has been created.";
+                    Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
                     finish();
                 }
 
                 @Override
                 public void onFailure(Throwable throwable) {
                     Log.e("Failure", "Could not register! Error: " + throwable.getMessage());
+                    CharSequence text = "Houston, we have a problem!";
+                    Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
                 }
             });
         }
