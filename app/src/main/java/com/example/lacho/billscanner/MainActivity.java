@@ -12,8 +12,11 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.lacho.billscanner.accounts.LoginActivity;
@@ -42,15 +45,16 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    Bitmap image;
-    TextView textView;
-    Client mKinveyClient;
-    String datapath = "";
-    String language = "eng";
+    private Bitmap image;
+    private TextView textView;
+    private Client mKinveyClient;
+    private String datapath = "";
+    private String language = "eng";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         Button ok = (Button) findViewById(R.id.ok);
         ok.setVisibility(View.INVISIBLE);
@@ -69,8 +73,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        Intent login = new Intent(this, LoginActivity.class);
-        startActivity(login);
+        //Intent login = new Intent(this, LoginActivity.class);
+       // startActivity(login);
 
         RecordData recordData = new RecordData(mKinveyClient);
 
@@ -91,6 +95,25 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, 0);
             }
         });
+    }
+
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton)view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.radio_eng:
+                if (checked) {
+                    language = "eng";
+                }
+                break;
+            case R.id.radio_bul:
+                if (checked) {
+                    language = "bul";
+                }
+                break;
+        }
     }
 
     public Client getmKinveyClient() {

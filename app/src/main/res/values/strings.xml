@@ -3,7 +3,9 @@
     <string name="take_a_picture">Take a picture</string>
     <string name="app_key">kid_BJOZFbKAx</string>
     <string name="app_secret">7386b05a10204b61a2d770abb8dba54c</string>
-    <string name="picture" />
+    <string name="picture"/>
     <string name="username">bill-scanner</string>
     <string name="password">bill-scanner</string>
+    <string name="eng_lang">English</string>
+    <string name="bul_lang">Bulgarian</string>
 </resources>

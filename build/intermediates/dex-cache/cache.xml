@@ -133,7 +133,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="637aecd2356a939f5be323bb3e6f969b42216adb">
+        sha1="74af0d579505916466a6631356c1ae139d440572">
         <dex dex="/home/lacho/Desktop/bill_scanner/bill-scanner/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_b19f2d84aa6eac236019dc99b04d43fbbfb6f74e/classes.dex" />
     </item>
     <item
