@@ -154,16 +154,17 @@ public class MainActivity extends AppCompatActivity {
         datapath  = getFilesDir() + "/tesseract/";
         checkFile(new File(datapath + "tessdata/"));
 
-        TessBaseAPI tessOCR = new TessBaseAPI();
-        tessOCR.init(datapath, language);
-        tessOCR.setImage(image);
-        ocrResult = tessOCR.getUTF8Text();
+        TessOCR tessOCR = new TessOCR(datapath, language);
+
+        ocrResult = tessOCR.getResult(image);
 
         if (ocrResult == null) {
             textView.setText("Houston, we have a problem!");
         } else {
             textView.setText(ocrResult);
         }
+
+        tessOCR.onDestroy();
     }
 
     private void selectCropImage() {
