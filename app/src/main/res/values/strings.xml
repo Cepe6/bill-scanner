@@ -4,6 +4,6 @@
     <string name="app_key">kid_S1hTI48Wb</string>
     <string name="app_secret">0ac0cff45fc14f7281c6bfd2276a36d6</string>
     <string name="picture" />
-    <string name="useremail">vmladenov22@gmail.com</string>
+    <string name="username">bill-scanner</string>
     <string name="password">bill-scanner</string>
 </resources>

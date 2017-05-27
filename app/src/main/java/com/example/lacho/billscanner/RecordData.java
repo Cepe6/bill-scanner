@@ -22,8 +22,8 @@ public class RecordData {
         billObj.setProducts(products);
         billObj.setTotalPrice(totalPrice);
 
-        AsyncAppData<Bill> myevents = mKinveyClient.appData("bills", Bill.class);
-        myevents.save(billObj, new KinveyClientCallback<Bill>() {
+        AsyncAppData<Bill> myEvents = mKinveyClient.appData("bills", Bill.class);
+        myEvents.save(billObj, new KinveyClientCallback<Bill>() {
             @Override
             public void onFailure(Throwable e) {
                 Log.e("TAG", "failed to save event data", e);

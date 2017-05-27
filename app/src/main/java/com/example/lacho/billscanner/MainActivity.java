@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.lacho.billscanner.accounts.LoginActivity;
 import com.googlecode.tesseract.android.TessBaseAPI;
 import com.kinvey.android.AsyncAppData;
 import com.kinvey.android.Client;
@@ -49,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button ok = (Button) findViewById(R.id.ok);
         ok.setVisibility(View.INVISIBLE);
-        //WIP -> create client and then check connectivity
         mKinveyClient = new Client.Builder(getString(R.string.app_key),
                 getString(R.string.app_secret),
                 this.getApplicationContext()).build();
@@ -62,19 +62,10 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("", "Kinvey Ping Success");
             }
         });
-        //WIP -> end
 
-        mKinveyClient.user().login(new KinveyUserCallback() {
-            @Override
-            public void onSuccess(User user) {
-                Log.e("Success", "Logged in with id: " + user.getId());
-            }
 
-            @Override
-            public void onFailure(Throwable throwable) {
-                Log.e("Failure", "Could not login");
-            }
-        });
+        Intent login = new Intent(this, LoginActivity.class);
+        startActivity(login);
 
         RecordData recordData = new RecordData(mKinveyClient);
 
@@ -96,6 +87,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, 0);
             }
         });
+    }
+
+    public Client getmKinveyClient() {
+        return mKinveyClient;
     }
 
     public void changeToAcc(View v) {
