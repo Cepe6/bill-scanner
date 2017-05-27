@@ -31,9 +31,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -42,13 +44,14 @@ public class MainActivity extends AppCompatActivity {
     Bitmap image;
     TextView textView;
     Client mKinveyClient;
-
+    String datapath = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button ok = (Button) findViewById(R.id.ok);
         ok.setVisibility(View.INVISIBLE);
+
         //WIP -> create client and then check connectivity
         mKinveyClient = new Client.Builder(getString(R.string.app_key),
                 getString(R.string.app_secret),
@@ -63,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //WIP -> end
-
+/*
         mKinveyClient.user().login(new KinveyUserCallback() {
             @Override
             public void onSuccess(User user) {
@@ -75,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("Failure", "Could not login");
             }
         });
-
+*/
         RecordData recordData = new RecordData(mKinveyClient);
 
         Map<String, String[]> products = new LinkedHashMap<>();
@@ -107,14 +110,22 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        // Set bitmap from activity result
         image = (Bitmap) data.getExtras().get("data");
 
+        // Init path to traineddata file
+        datapath = getFilesDir()+ "/tesseract/";
+
+        // Copy or create file from assets
+        checkFile(new File(datapath + "tessdata/"));
+
         String ocrResult;
-        TessOCR tessOCR = new TessOCR(getDirPath());
+        //Create tesseract object
+        TessOCR tessOCR = new TessOCR(datapath);
         ocrResult = tessOCR.getResult(image);
 
         if (ocrResult == null) {
-            textView.setText("Result is null");
+            textView.setText("Ops, we got error!\nTry Again!");
         } else {
             textView.setText(ocrResult);
         }
@@ -125,37 +136,62 @@ public class MainActivity extends AppCompatActivity {
         ok.setVisibility(View.VISIBLE);
         //selectCropImage();
     }
+/*
+    private void selectCropImage() {
+        final CropImageView cropImageView = (CropImageView) findViewById(R.id.cropImageView);
+        cropImageView.setImageBitmap(image);
 
-//    private void selectCropImage() {
-//        final CropImageView cropImageView = (CropImageView) findViewById(R.id.cropImageView);
-//        cropImageView.setImageBitmap(image);
-//
-//        final Button ok = (Button) findViewById(R.id.ok);
-//        ok.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ImageView imageView = (ImageView) findViewById(R.id.imageview);
-//                imageView.setImageBitmap(cropImageView.getCroppedImage());
-//                ok.setVisibility(View.GONE);
-//            }
-//        });
-//    }
+        final Button ok = (Button) findViewById(R.id.ok);
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-    private String getDirPath() {
-        File f = new File(getCacheDir() + "/tesseract/");
-        if (!f.exists()) try {
+                ok.setVisibility(View.GONE);
+            }
+        });
+    }
+*/
+    private void copyFiles() {
+        try {
+            //location we want the file to be at
+            String filepath = datapath + "/tessdata/eng.traineddata";
 
-            InputStream is = getAssets().open("tesseract/tessdata/eng.traineddata");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
+            //get access to AssetManager
+            AssetManager assetManager = getAssets();
 
-            FileOutputStream fos = new FileOutputStream(f);
-            fos.write(buffer);
-            fos.close();
-        } catch (Exception e) { Log.e("error", e.toString()); }
+            //open byte streams for reading/writing
+            InputStream instream = assetManager.open("tessdata/eng.traineddata");
+            OutputStream outstream = new FileOutputStream(filepath);
 
-        return f.getPath();
+            //copy the file to the location specified by filepath
+            byte[] buffer = new byte[1024];
+            int read;
+            while ((read = instream.read(buffer)) != -1) {
+                outstream.write(buffer, 0, read);
+            }
+            outstream.flush();
+            outstream.close();
+            instream.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void checkFile(File dir) {
+        //directory does not exist, but we can successfully create it
+        if (!dir.exists()&& dir.mkdirs()){
+            copyFiles();
+        }
+        //The directory exists, but there is no data file in it
+        if(dir.exists()) {
+            String datafilepath = datapath+ "/tessdata/eng.traineddata";
+            File datafile = new File(datafilepath);
+            if (!datafile.exists()) {
+                copyFiles();
+            }
+        }
     }
 }

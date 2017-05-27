@@ -22,7 +22,7 @@ public class RecordData {
         billObj.setProducts(products);
         billObj.setTotalPrice(totalPrice);
 
-        AsyncAppData<Bill> myevents = mKinveyClient.appData("bills", Bill.class);
+        AsyncAppData<Bill> myevents = mKinveyClient.appData("billObj", Bill.class);
         myevents.save(billObj, new KinveyClientCallback<Bill>() {
             @Override
             public void onFailure(Throwable e) {
