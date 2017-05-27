@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.lacho.billscanner.MainActivity;
 import com.example.lacho.billscanner.R;
 import com.kinvey.android.Client;
 import com.kinvey.android.callback.KinveyUserCallback;
@@ -20,7 +21,6 @@ import java.io.IOException;
  */
 
 public class LoginActivity extends AppCompatActivity {
-    private Client mKinveyClient;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,12 +29,16 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void tryLogin(View v) throws IOException {
+        Client mKinveyClient = new Client.Builder(getString(R.string.app_key),
+                getString(R.string.app_secret),
+                this.getApplicationContext()).build();
+
         EditText usernameEdit = (EditText)findViewById(R.id.login_username);
         EditText passwordEdit = (EditText)findViewById(R.id.login_password);
         if(usernameEdit == null || passwordEdit == null) {
             Log.e("ERROR", "Could not login");
         } else {
-            String username = usernameEdit.getText().toString();
+            final String username = usernameEdit.getText().toString();
             String password = passwordEdit.getText().toString();
             mKinveyClient.user().login(username, password, new KinveyUserCallback() {
                 @Override

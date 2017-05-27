@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         mKinveyClient = new Client.Builder(getString(R.string.app_key),
                 getString(R.string.app_secret),
                 this.getApplicationContext()).build();
@@ -68,14 +69,13 @@ public class MainActivity extends AppCompatActivity {
             if(mKinveyClient.user().getUsername() == null) {
                 Log.i("WRONG THO", "User is " + mKinveyClient.user().getId());
                 mKinveyClient.user().logout();
-                login();
+                Intent login = new Intent(this, LoginActivity.class);
+                startActivity(login);
             }
         } else {
-            login();
+            Intent login = new Intent(this, LoginActivity.class);
+            startActivity(login);
         }
-
-        setContentView(R.layout.activity_main);
-        username = mKinveyClient.user().getUsername();
 
         mKinveyClient.ping(new KinveyPingCallback() {
             public void onFailure(Throwable t) {
@@ -103,38 +103,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intent, 0);
-            }
-        });
-    }
-
-    private void login() {
-        setContentView(R.layout.activity_login);
-
-
-        Button button = (Button) findViewById(R.id.login_btn);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText usernameEdit = (EditText)findViewById(R.id.login_username);
-                EditText passwordEdit = (EditText)findViewById(R.id.login_password);
-                if(usernameEdit == null || passwordEdit == null) {
-                    Log.e("ERROR", "Could not login");
-                } else {
-                    String username = usernameEdit.getText().toString();
-                    String password = passwordEdit.getText().toString();
-                    mKinveyClient.user().login(username, password, new KinveyUserCallback() {
-                        @Override
-                        public void onSuccess(User user) {
-                            Log.i("Success", "Logged in with user " + user.getUsername());
-                        }
-
-                        @Override
-                        public void onFailure(Throwable throwable) {
-                            Log.i("Failure", "Could not login");
-                            login();
-                        }
-                    });
-                }
             }
         });
     }

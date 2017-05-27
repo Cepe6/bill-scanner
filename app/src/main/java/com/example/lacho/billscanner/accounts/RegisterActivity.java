@@ -1,5 +1,6 @@
 package com.example.lacho.billscanner.accounts;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.lacho.billscanner.MainActivity;
 import com.example.lacho.billscanner.R;
 import com.kinvey.android.Client;
 import com.kinvey.android.callback.KinveyUserCallback;
@@ -26,6 +28,10 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void createUser(View view) {
+        Client mKinveyClient = new Client.Builder(getString(R.string.app_key),
+                getString(R.string.app_secret),
+                this.getApplicationContext()).build();
+
         EditText usernameEdit = (EditText)findViewById(R.id.register_username);
         EditText passwordEdit = (EditText)findViewById(R.id.register_password);
         if(usernameEdit == null || passwordEdit == null) {
@@ -37,7 +43,6 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(User user) {
                     Log.v("Success", "Registered user with id " + user.getId());
-                    user.put("username", username);
                     finish();
                 }
 
