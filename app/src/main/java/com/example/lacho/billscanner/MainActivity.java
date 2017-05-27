@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
         Button ok = (Button) findViewById(R.id.ok);
         ok.setVisibility(View.INVISIBLE);
@@ -64,6 +63,20 @@ public class MainActivity extends AppCompatActivity {
         mKinveyClient = new Client.Builder(getString(R.string.app_key),
                 getString(R.string.app_secret),
                 this.getApplicationContext()).build();
+
+        Log.i("CHECKING", "IS USER LOGGED IN: " + mKinveyClient.user().isUserLoggedIn());
+        if(mKinveyClient.user().isUserLoggedIn()) {
+                Log.i("YEP", "User is " + mKinveyClient.user().getUsername());
+            if(mKinveyClient.user().getUsername() == null) {
+                Log.i("WRONG THO", "User is " + mKinveyClient.user().getId());
+                mKinveyClient.user().logout();
+                Intent login = new Intent(this, LoginActivity.class);
+                startActivity(login);
+            }
+        } else {
+            Intent login = new Intent(this, LoginActivity.class);
+            startActivity(login);
+        }
 
         mKinveyClient.ping(new KinveyPingCallback() {
             public void onFailure(Throwable t) {
@@ -74,9 +87,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        //Intent login = new Intent(this, LoginActivity.class);
-       // startActivity(login);
 
         RecordData recordData = new RecordData(mKinveyClient);
 

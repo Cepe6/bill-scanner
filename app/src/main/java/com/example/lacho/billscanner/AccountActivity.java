@@ -7,21 +7,30 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.example.lacho.billscanner.accounts.LoginActivity;
 import com.kinvey.android.AsyncAppData;
 import com.kinvey.android.Client;
 import com.kinvey.android.callback.KinveyListCallback;
 
 public class AccountActivity extends AppCompatActivity {
+    private Client mKinveyClient;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.i("Tag", "created");
         setContentView(R.layout.activity_account);
-        Client mKinveyClient = new Client.Builder(getString(R.string.app_key),
-                getString(R.string.app_secret),
-                this.getApplicationContext()).build();
 
+        TextView username = (TextView) findViewById(R.id.username);
+        if(mKinveyClient.user().getUsername() == null) {
+            username.setText("Welcome, null");
+        } else {
+            username.setText("Welcome, " + mKinveyClient.user());
+        }
+
+        Log.i("Check", mKinveyClient.user().toString());
         AsyncAppData<Bill> events = mKinveyClient.appData("bills", Bill.class);
         events.get(new KinveyListCallback<Bill>() {
             @Override
@@ -43,5 +52,10 @@ public class AccountActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void logout(View view) {
+        mKinveyClient.user().logout();
+        startActivity(new Intent(this, LoginActivity.class));
     }
 }
