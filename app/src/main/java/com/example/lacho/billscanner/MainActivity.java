@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button ok = (Button) findViewById(R.id.ok);
         ok.setVisibility(View.INVISIBLE);
+
         mKinveyClient = new Client.Builder(getString(R.string.app_key),
                 getString(R.string.app_secret),
                 this.getApplicationContext()).build();
@@ -78,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
         products.put("Milk", new String[] {"1", "1.00"});
         products.put("Mayo", new String[] {"5", "10.00"});
         recordData.makeRecord("Billa", products, 14.50);
-
 
         textView = (TextView) findViewById(R.id.textArea);
         textView.setText("Default text");
@@ -109,6 +109,9 @@ public class MainActivity extends AppCompatActivity {
         image = (Bitmap) data.getExtras().get("data");
         datapath  = getFilesDir() + "/tesseract/";
         String ocrResult;
+
+        checkFile(new File(datapath + "tessdata/"));
+
         TessOCR tessOCR = new TessOCR(datapath, language);
         ocrResult = tessOCR.getResult(image);
 

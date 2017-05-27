@@ -16,15 +16,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/kinvey_android_2_10_12_.xml" afterPath="$PROJECT_DIR$/.idea/libraries/kinvey_android_2_10_12_.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/lacho/billscanner/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/lacho/billscanner/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/lacho/billscanner/TessOCR.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/lacho/billscanner/TessOCR.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
     </list>
     <ignored path="bill-scanner.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -56,14 +50,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/lacho/billscanner/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="111" column="56" selection-start-line="111" selection-start-column="56" selection-end-line="111" selection-end-column="56" />
+            <state relative-caret-position="535">
+              <caret line="132" column="34" selection-start-line="132" selection-start-column="34" selection-end-line="132" selection-end-column="34" />
               <folding>
-                <element signature="e#1816#1843#0" expanded="true" />
-                <element signature="e#1861#1891#0" expanded="true" />
+                <element signature="e#1817#1844#0" expanded="true" />
+                <element signature="e#1862#1892#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -108,16 +102,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/lacho/billscanner/accounts/LoginActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="TessOCR.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/lacho/billscanner/TessOCR.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -128,13 +112,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
           <provider editor-type-id="android-designer2">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-54">
+            <state relative-caret-position="108">
               <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
               <folding />
             </state>
@@ -147,6 +131,18 @@
             <state relative-caret-position="144">
               <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccountActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/lacho/billscanner/AccountActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -2014,9 +2010,9 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/lacho/billscanner/RecordData.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/lacho/billscanner/Bill.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/lacho/billscanner/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/lacho/billscanner/TessOCR.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/lacho/billscanner/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -2604,7 +2600,14 @@
       <option name="project" value="LOCAL" />
       <updated>1495402425911</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Adding method that checks if the file is already on the device and method that copy the file to the device storage.">
+      <created>1495892231603</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1495892231603</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2659,7 +2662,8 @@
     <MESSAGE value="Adding crop lib, imageView, cropImageView and button for selecting croped image." />
     <MESSAGE value="Adding function for getting dir path for tesseract." />
     <MESSAGE value="Create textView for ocr result and changing text" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create textView for ocr result and changing text" />
+    <MESSAGE value="Adding method that checks if the file is already on the device and method that copy the file to the device storage." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding method that checks if the file is already on the device and method that copy the file to the device storage." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -2695,8 +2699,8 @@
         <state relative-caret-position="594">
           <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
           <folding>
-            <element signature="e#1816#1843#0" expanded="true" />
-            <element signature="e#1861#1891#0" expanded="true" />
+            <element signature="e#1817#1844#0" expanded="true" />
+            <element signature="e#1862#1892#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2737,8 +2741,8 @@
         <state relative-caret-position="540">
           <caret line="50" column="33" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
           <folding>
-            <element signature="e#1816#1843#0" expanded="true" />
-            <element signature="e#1861#1891#0" expanded="true" />
+            <element signature="e#1817#1844#0" expanded="true" />
+            <element signature="e#1862#1892#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2772,8 +2776,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1816#1843#0" expanded="true" />
-            <element signature="e#1861#1891#0" expanded="true" />
+            <element signature="e#1817#1844#0" expanded="true" />
+            <element signature="e#1862#1892#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2805,8 +2809,8 @@
         <state relative-caret-position="144">
           <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
           <folding>
-            <element signature="e#1816#1843#0" expanded="true" />
-            <element signature="e#1861#1891#0" expanded="true" />
+            <element signature="e#1817#1844#0" expanded="true" />
+            <element signature="e#1862#1892#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2923,16 +2927,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/lacho/billscanner/AccountActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/lacho/billscanner/CropImageActivity.java" />
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
@@ -3001,17 +2995,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/lacho/billscanner/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="111" column="56" selection-start-line="111" selection-start-column="56" selection-end-line="111" selection-end-column="56" />
-          <folding>
-            <element signature="e#1816#1843#0" expanded="true" />
-            <element signature="e#1861#1891#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_account.xml">
       <provider selected="true" editor-type-id="android-designer2">
         <state />
@@ -3050,9 +3033,30 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-54">
+        <state relative-caret-position="108">
           <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/lacho/billscanner/AccountActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/lacho/billscanner/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="132" column="34" selection-start-line="132" selection-start-column="34" selection-end-line="132" selection-end-column="34" />
+          <folding>
+            <element signature="e#1817#1844#0" expanded="true" />
+            <element signature="e#1862#1892#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
