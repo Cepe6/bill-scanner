@@ -8,4 +8,7 @@
     <string name="password">bill-scanner</string>
     <string name="eng_lang">English</string>
     <string name="bul_lang">Bulgarian</string>
+    <string name="ok">OK</string>
+    <string name="take_a_picture_text">Take a picture</string>
+    <string name="hello">Hello</string>
 </resources>
