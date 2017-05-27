@@ -34,6 +34,10 @@ public class Bill extends GenericJson { // For Serialization
         this.bill = bill;
     }
 
+    public void setProducts(Map<String, String[]> products) {
+        this.products = products;
+    }
+
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
@@ -44,10 +48,6 @@ public class Bill extends GenericJson { // For Serialization
 
     public Map<String, String[]> getProducts() {
         return products;
-    }
-
-    public void setProducts(Map<String, String[]> products) {
-        this.products = products;
     }
 
     public double getTotalPrice() {

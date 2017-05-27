@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="android-image-cropper-2.3.1">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.android/build-cache/b199daf57b955a8c105f6c88cc0e86e1f2492856/output/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.android/build-cache/b199daf57b955a8c105f6c88cc0e86e1f2492856/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/656133466bedecc27c4f8a7a428c85410b1cb31a/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/656133466bedecc27c4f8a7a428c85410b1cb31a/output/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
