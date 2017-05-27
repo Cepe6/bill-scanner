@@ -144,28 +144,28 @@ public class MainActivity extends AppCompatActivity {
 
         selectCropImage();
 
-        setAndOutputTess();
+        //setAndOutputTess();
         findViewById(R.id.cropImageView).setVisibility(View.GONE);
     }
-
-    private void setAndOutputTess() {
-        String ocrResult;
-
-        datapath  = getFilesDir() + "/tesseract/";
-        checkFile(new File(datapath + "tessdata/"));
-
-        TessOCR tessOCR = new TessOCR(datapath, language);
-
-        ocrResult = tessOCR.getResult(image);
-
-        if (ocrResult == null) {
-            textView.setText("Houston, we have a problem!");
-        } else {
-            textView.setText(ocrResult);
-        }
-
-        tessOCR.onDestroy();
-    }
+//
+//    private void setAndOutputTess() {
+//        String ocrResult;
+//
+//        datapath  = getFilesDir() + "/tesseract/";
+//        checkFile(new File(datapath + "tessdata/"));
+//
+//        TessOCR tessOCR = new TessOCR(datapath, language);
+//
+//        ocrResult = tessOCR.getResult(image);
+//
+//        if (ocrResult == null) {
+//            textView.setText("Houston, we have a problem!");
+//        } else {
+//            textView.setText(ocrResult);
+//        }
+//
+//        tessOCR.onDestroy();
+//    }
 
     private void selectCropImage() {
         final CropImageView cropImageView = (CropImageView) findViewById(R.id.cropImageView);
