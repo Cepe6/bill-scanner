@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Bitmap image;
     private TextView textView;
+    private String username;
     private Client mKinveyClient;
     private String datapath = "";
     private String language = DEFAULT_LANGUAGE;
@@ -56,10 +58,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Button ok = (Button) findViewById(R.id.ok);
-        ok.setVisibility(View.INVISIBLE);
-
         mKinveyClient = new Client.Builder(getString(R.string.app_key),
                 getString(R.string.app_secret),
                 this.getApplicationContext()).build();
@@ -70,13 +68,14 @@ public class MainActivity extends AppCompatActivity {
             if(mKinveyClient.user().getUsername() == null) {
                 Log.i("WRONG THO", "User is " + mKinveyClient.user().getId());
                 mKinveyClient.user().logout();
-                Intent login = new Intent(this, LoginActivity.class);
-                startActivity(login);
+                login();
             }
         } else {
-            Intent login = new Intent(this, LoginActivity.class);
-            startActivity(login);
+            login();
         }
+
+        setContentView(R.layout.activity_main);
+        username = mKinveyClient.user().getUsername();
 
         mKinveyClient.ping(new KinveyPingCallback() {
             public void onFailure(Throwable t) {
@@ -108,6 +107,38 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void login() {
+        setContentView(R.layout.activity_login);
+
+
+        Button button = (Button) findViewById(R.id.login_btn);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText usernameEdit = (EditText)findViewById(R.id.login_username);
+                EditText passwordEdit = (EditText)findViewById(R.id.login_password);
+                if(usernameEdit == null || passwordEdit == null) {
+                    Log.e("ERROR", "Could not login");
+                } else {
+                    String username = usernameEdit.getText().toString();
+                    String password = passwordEdit.getText().toString();
+                    mKinveyClient.user().login(username, password, new KinveyUserCallback() {
+                        @Override
+                        public void onSuccess(User user) {
+                            Log.i("Success", "Logged in with user " + user.getUsername());
+                        }
+
+                        @Override
+                        public void onFailure(Throwable throwable) {
+                            Log.i("Failure", "Could not login");
+                            login();
+                        }
+                    });
+                }
+            }
+        });
+    }
+
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
         boolean checked = ((RadioButton)view).isChecked();
@@ -133,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void changeToAcc(View v) {
         Intent intent = new Intent(this, AccountActivity.class);
+        intent.putExtra("username", username);
         startActivity(intent);
     }
 
