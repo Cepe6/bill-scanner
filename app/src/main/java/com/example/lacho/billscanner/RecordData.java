@@ -16,11 +16,12 @@ public class RecordData {
         this.mKinveyClient = mKinveyClient;
     }
 
-    public void makeRecord(String bill, Map<String, String[]> products, Double totalPrice) {
+    public void makeRecord(String bill, Map<String, String[]> products, Double totalPrice, String id) {
         Bill billObj = new Bill();
         billObj.setBill(bill);
         billObj.setProducts(products);
         billObj.setTotalPrice(totalPrice);
+        billObj.setOwnerID(id);
 
         AsyncAppData<Bill> myEvents = mKinveyClient.appData("bills", Bill.class);
         myEvents.save(billObj, new KinveyClientCallback<Bill>() {

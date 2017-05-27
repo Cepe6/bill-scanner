@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
     private Bitmap image;
     private TextView textView;
-    private String username;
     private Client mKinveyClient;
     private String datapath = "";
     private String language = DEFAULT_LANGUAGE;
@@ -87,13 +86,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        RecordData recordData = new RecordData(mKinveyClient);
 
-        Map<String, String[]> products = new LinkedHashMap<>();
-        products.put("Apple", new String[] {"2", "3.50"});
-        products.put("Milk", new String[] {"1", "1.00"});
-        products.put("Mayo", new String[] {"5", "10.00"});
-        recordData.makeRecord("Billa", products, 14.50);
 
         textView = (TextView) findViewById(R.id.textArea);
 
@@ -125,14 +118,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
-
-    public Client getmKinveyClient() {
-        return mKinveyClient;
-    }
-
     public void changeToAcc(View v) {
         Intent intent = new Intent(this, AccountActivity.class);
-        intent.putExtra("username", username);
         startActivity(intent);
     }
 
@@ -150,11 +137,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void setAndOutputTess() {
         String ocrResult;
+        TessBaseAPI tessOCR = new TessBaseAPI();
 
         datapath  = getFilesDir() + "/tesseract/";
         checkFile(new File(datapath + "tessdata/"));
 
-        TessBaseAPI tessOCR = new TessBaseAPI();
         tessOCR.init(datapath, language);
         tessOCR.setImage(image);
         ocrResult = tessOCR.getUTF8Text();
@@ -226,5 +213,15 @@ public class MainActivity extends AppCompatActivity {
                 copyFiles();
             }
         }
+    }
+
+    public void addBill(View view) {
+        RecordData recordData = new RecordData(mKinveyClient);
+
+        Map<String, String[]> products = new LinkedHashMap<>();
+        products.put("Apple", new String[] {"2", "3.50"});
+        products.put("Milk", new String[] {"1", "1.00"});
+        products.put("Mayo", new String[] {"5", "10.00"});
+        recordData.makeRecord("Billa", products, 14.50, mKinveyClient.user().getId());
     }
 }

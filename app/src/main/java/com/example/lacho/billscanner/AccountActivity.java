@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,8 @@ import com.example.lacho.billscanner.accounts.LoginActivity;
 import com.kinvey.android.AsyncAppData;
 import com.kinvey.android.Client;
 import com.kinvey.android.callback.KinveyListCallback;
+
+import java.util.Map;
 
 public class AccountActivity extends AppCompatActivity {
     private Client mKinveyClient;
@@ -30,11 +33,24 @@ public class AccountActivity extends AppCompatActivity {
         usernameArea.setText(mKinveyClient.user().getId());
 
         Log.i("Check", mKinveyClient.user().toString());
+
         AsyncAppData<Bill> events = mKinveyClient.appData("bills", Bill.class);
         events.get(new KinveyListCallback<Bill>() {
             @Override
             public void onSuccess(Bill[] bills) {
-                Log.v("Success", "received "+ bills.length + " events");
+                String billsOutput = "{\n ";
+                for (Bill bill : bills) {
+                    if(bill.getOwnerID().equals(mKinveyClient.user().getId())) {
+                        billsOutput += "\tbill {\n\t\tname: " + bill.getBill() + ", \n\t\tproducts: [";
+                        for (Map.Entry<String,String[]> stringEntry : bill.getProducts().entrySet()) {
+                            billsOutput += "\n\t\t\t" + stringEntry.getKey() + " {\n\t\t\t\tamount: " + stringEntry.getValue()[0] + "\n\t\t\t\tprice: " + stringEntry.getValue()[1] + "\n\t\t\t}";
+                        }
+                        billsOutput += ", \n\t\tprice: " +  bill.getTotalPrice() + "\n\t},";
+                    }
+                }
+
+                billsOutput += "\n}";
+                printBills(billsOutput);
             }
 
             @Override
@@ -51,6 +67,13 @@ public class AccountActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void printBills(String bills) {
+        TextView billsArea = (TextView) findViewById(R.id.bills);
+
+        billsArea.setMovementMethod(new ScrollingMovementMethod());
+        billsArea.setText(bills);
     }
 
     public void logout(View view) {

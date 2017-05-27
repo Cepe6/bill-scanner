@@ -19,6 +19,8 @@ public class Bill extends GenericJson { // For Serialization
     @Key
     private String bill;
     @Key
+    private String ownerID;
+    @Key
     private Map<String, String[]> products;
     @Key
     private double totalPrice;
@@ -48,6 +50,14 @@ public class Bill extends GenericJson { // For Serialization
 
     public Map<String, String[]> getProducts() {
         return products;
+    }
+
+    public String getOwnerID() {
+        return ownerID;
+    }
+
+    public void setOwnerID(String ownerID) {
+        this.ownerID = ownerID;
     }
 
     public double getTotalPrice() {
