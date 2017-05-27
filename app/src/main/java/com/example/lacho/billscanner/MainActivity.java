@@ -98,10 +98,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public static Client getmKinveyClient() {
-        return mKinveyClient;
-    }
-
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
         boolean checked = ((RadioButton)view).isChecked();

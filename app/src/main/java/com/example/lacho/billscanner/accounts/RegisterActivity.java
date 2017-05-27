@@ -34,7 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             final String username = usernameEdit.getText().toString();
             String password = passwordEdit.getText().toString();
-            MainActivity.getmKinveyClient().user().create(username, password, new KinveyUserCallback() {
+            MainActivity.mKinveyClient.user().create(username, password, new KinveyUserCallback() {
                 @Override
                 public void onSuccess(User user) {
                     Log.v("Success", "Registered user with id " + user.getId());

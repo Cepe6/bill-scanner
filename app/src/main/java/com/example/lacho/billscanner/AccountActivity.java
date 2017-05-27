@@ -25,17 +25,17 @@ public class AccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_account);
 
         TextView usernameArea = (TextView) findViewById(R.id.username);
-        usernameArea.setText(MainActivity.getmKinveyClient().user().getId());
+        usernameArea.setText(MainActivity.mKinveyClient.user().getId());
 
-        Log.i("Check", MainActivity.getmKinveyClient().user().toString());
+        Log.i("Check", MainActivity.mKinveyClient.user().toString());
 
-        AsyncAppData<Bill> events = MainActivity.getmKinveyClient().appData("bills", Bill.class);
+        AsyncAppData<Bill> events = MainActivity.mKinveyClient.appData("bills", Bill.class);
         events.get(new KinveyListCallback<Bill>() {
             @Override
             public void onSuccess(Bill[] bills) {
                 String billsOutput = "{\n ";
                 for (Bill bill : bills) {
-                    if(bill.getOwnerID().equals(MainActivity.getmKinveyClient().user().getId())) {
+                    if(bill.getOwnerID().equals(MainActivity.mKinveyClient.user().getId())) {
                         billsOutput += "\tbill {\n\t\tname: " + bill.getBill() + ", \n\t\tproducts: [";
                         for (Map.Entry<String,String[]> stringEntry : bill.getProducts().entrySet()) {
                             billsOutput += "\n\t\t\t" + stringEntry.getKey() + " {\n\t\t\t\tamount: " + stringEntry.getValue()[0] + "\n\t\t\t\tprice: " + stringEntry.getValue()[1] + "\n\t\t\t}";
@@ -72,7 +72,7 @@ public class AccountActivity extends AppCompatActivity {
     }
 
     public void logout(View view) {
-        MainActivity.getmKinveyClient().user().logout().execute();
+        MainActivity.mKinveyClient.user().logout().execute();
         startActivity(new Intent(this, LoginActivity.class));
     }
 }

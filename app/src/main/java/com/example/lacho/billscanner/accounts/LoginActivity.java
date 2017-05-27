@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             final String username = usernameEdit.getText().toString();
             String password = passwordEdit.getText().toString();
-            MainActivity.getmKinveyClient().user().login(username, password, new KinveyUserCallback() {
+            MainActivity.mKinveyClient.user().login(username, password, new KinveyUserCallback() {
                 @Override
                 public void onSuccess(User user) {
                     Log.i("Success", "Logged in with user " + user.getUsername());
