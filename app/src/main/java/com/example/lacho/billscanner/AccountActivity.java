@@ -8,13 +8,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.lacho.billscanner.accounts.LoginActivity;
 import com.kinvey.android.AsyncAppData;
 import com.kinvey.android.Client;
 import com.kinvey.android.callback.KinveyListCallback;
-import com.kinvey.android.callback.KinveyPingCallback;
-import com.kinvey.android.callback.KinveyUserCallback;
-import com.kinvey.java.User;
 
 public class AccountActivity extends AppCompatActivity {
     @Override
