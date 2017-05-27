@@ -45,11 +45,13 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String DEFAULT_LANGUAGE = "eng";
+
     private Bitmap image;
     private TextView textView;
     private Client mKinveyClient;
     private String datapath = "";
-    private String language = "eng";
+    private String language = DEFAULT_LANGUAGE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
         recordData.makeRecord("Billa", products, 14.50);
 
         textView = (TextView) findViewById(R.id.textArea);
-        textView.setText("Default text");
 
         Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -125,46 +126,52 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        findViewById(R.id.ok).setVisibility(View.VISIBLE);
         image = (Bitmap) data.getExtras().get("data");
-        datapath  = getFilesDir() + "/tesseract/";
+
+        selectCropImage();
+
+        setAndOutputTess();
+        findViewById(R.id.cropImageView).setVisibility(View.GONE);
+    }
+
+    private void setAndOutputTess() {
         String ocrResult;
 
+        datapath  = getFilesDir() + "/tesseract/";
         checkFile(new File(datapath + "tessdata/"));
 
         TessOCR tessOCR = new TessOCR(datapath, language);
+
         ocrResult = tessOCR.getResult(image);
 
         if (ocrResult == null) {
-            textView.setText("Result is null");
+            textView.setText("Houston, we have a problem!");
         } else {
             textView.setText(ocrResult);
         }
 
         tessOCR.onDestroy();
-
-        Button ok = (Button) findViewById(R.id.ok);
-        ok.setVisibility(View.VISIBLE);
-        //selectCropImage();
     }
 
-//    private void selectCropImage() {
-//        final CropImageView cropImageView = (CropImageView) findViewById(R.id.cropImageView);
-//        cropImageView.setImageBitmap(image);
-//
-//        final Button ok = (Button) findViewById(R.id.ok);
-//        ok.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ImageView imageView = (ImageView) findViewById(R.id.imageview);
-//                imageView.setImageBitmap(cropImageView.getCroppedImage());
-//                ok.setVisibility(View.GONE);
-//            }
-//        });
-//    }
+    private void selectCropImage() {
+        final CropImageView cropImageView = (CropImageView) findViewById(R.id.cropImageView);
+        cropImageView.setVisibility(View.VISIBLE);
+        cropImageView.setImageBitmap(image);
+        cropImageView.setAutoZoomEnabled(false);
+
+        final Button ok = (Button) findViewById(R.id.ok);
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                image = cropImageView.getCroppedImage();
+                ok.setVisibility(View.INVISIBLE);
+            }
+        });
+    }
 
     private void copyFiles() {
         try {
