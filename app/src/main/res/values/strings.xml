@@ -11,4 +11,8 @@
     <string name="ok">OK</string>
     <string name="take_a_picture_text">Take a picture</string>
     <string name="hello">Hello</string>
+    <string name="register">Register</string>
+    <string name="name">Name</string>
+    <string name="login">Login</string>
+    <string name="new_picture">New picture</string>
 </resources>
