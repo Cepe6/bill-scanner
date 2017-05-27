@@ -25,7 +25,7 @@ public class AccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_account);
 
         TextView usernameArea = (TextView) findViewById(R.id.username);
-        usernameArea.setText(MainActivity.mKinveyClient.user().getId());
+        usernameArea.setText(MainActivity.mKinveyClient.user().getUsername());
 
         Log.i("Check", MainActivity.mKinveyClient.user().toString());
 
