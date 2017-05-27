@@ -8,12 +8,11 @@ import com.googlecode.tesseract.android.TessBaseAPI;
 class TessOCR {
     private TessBaseAPI mTess;
 
-    public TessOCR(String fileDir) {
+    public TessOCR(String datapath, String language) {
         this.mTess = new TessBaseAPI();
-        String language = "eng";
 
         try {
-            mTess.init(fileDir, language);
+            mTess.init(datapath, language);
         } catch (Exception e) {
             Log.e("Tesseract Init", e.toString());
         }

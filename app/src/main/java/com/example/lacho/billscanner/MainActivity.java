@@ -32,9 +32,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -43,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     Bitmap image;
     TextView textView;
     Client mKinveyClient;
+    String datapath = "";
+    String language = "eng";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,9 +107,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         image = (Bitmap) data.getExtras().get("data");
-
+        datapath  = getFilesDir() + "/tesseract/";
         String ocrResult;
-        TessOCR tessOCR = new TessOCR(getDirPath());
+        TessOCR tessOCR = new TessOCR(datapath, language);
         ocrResult = tessOCR.getResult(image);
 
         if (ocrResult == null) {
@@ -136,21 +140,47 @@ public class MainActivity extends AppCompatActivity {
 //        });
 //    }
 
-    private String getDirPath() {
-        File f = new File(getCacheDir() + "/tesseract/");
-        if (!f.exists()) try {
+    private void copyFiles() {
+        try {
+            //location we want the file to be at
+            String filepath = datapath + "/tessdata/" + language + ".traineddata";
 
-            InputStream is = getAssets().open("tesseract/tessdata/eng.traineddata");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
+            //get access to AssetManager
+            AssetManager assetManager = getAssets();
 
-            FileOutputStream fos = new FileOutputStream(f);
-            fos.write(buffer);
-            fos.close();
-        } catch (Exception e) { Log.e("error", e.toString()); }
+            //open byte streams for reading/writing
+            InputStream instream = assetManager.open("tessdata/" + language + ".traineddata");
+            OutputStream outstream = new FileOutputStream(filepath);
 
-        return f.getPath();
+            //copy the file to the location specified by filepath
+            byte[] buffer = new byte[1024];
+            int read;
+            while ((read = instream.read(buffer)) != -1) {
+                outstream.write(buffer, 0, read);
+            }
+            outstream.flush();
+            outstream.close();
+            instream.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void checkFile(File dir) {
+        //directory does not exist, but we can successfully create it
+        if (!dir.exists()&& dir.mkdirs()){
+            copyFiles();
+        }
+        //The directory exists, but there is no data file in it
+        if(dir.exists()) {
+            String datafilepath = datapath + "/tessdata/" + language + ".traineddata";
+            File datafile = new File(datafilepath);
+            if (!datafile.exists()) {
+                copyFiles();
+            }
+        }
     }
 }

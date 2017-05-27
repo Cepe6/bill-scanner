@@ -3,48 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="/home/lacho/Desktop/test/pesho/bill-scanner/app/libs/google-http-client-jackson2-1.19.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="81dbf9795d387d5e80e55346582d5f2fb81a42eb">
-        <dex dex="/home/lacho/Desktop/test/pesho/bill-scanner/app/build/intermediates/transforms/dex/debug/folders/1000/2/google-http-client-jackson2-1.19.0_069597324264c7d60155ae7e843164510380e383/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/lacho/Desktop/test/pesho/bill-scanner/app/libs/google-http-client-1.19.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="cdca49ad0977c040f603478aa2e16b2775c8fec6">
-        <dex dex="/home/lacho/Desktop/test/pesho/bill-scanner/app/build/intermediates/transforms/dex/debug/folders/1000/2/google-http-client-1.19.0_3c0af6012ec4a8bc147ec452df546e62a689966c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/lacho/.android/build-cache/433f06913fa67aed22fa9e2854b29ad31965b55e/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="8a23dd9b93757918e8f4f8f7382418c58a6cee22">
-        <dex dex="/home/lacho/Desktop/test/pesho/bill-scanner/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_205bc1f516438c5cf54480a4ca849f40b5f2ae1d/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/lacho/Desktop/test/pesho/bill-scanner/app/libs/google-http-client-gson-1.19.0.jar"
+        jar="/home/lacho/Desktop/bill_scanner/bill-scanner/app/libs/google-http-client-gson-1.19.0.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="b3cdefb990d5212bb2a130525b20e2c44aeffc4c">
-        <dex dex="/home/lacho/Desktop/test/pesho/bill-scanner/app/build/intermediates/transforms/dex/debug/folders/1000/2/google-http-client-gson-1.19.0_aba5780ed466e87c1db7d00c95174ff914c95a13/classes.dex" />
+        <dex dex="/home/lacho/Desktop/bill_scanner/bill-scanner/app/build/intermediates/transforms/dex/debug/folders/1000/2/google-http-client-gson-1.19.0_887a03a20aefae4ffb618d60907dca6e64013941/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/home/lacho/Desktop/test/pesho/bill-scanner/app/libs/java-api-core-2.10.12.jar"
+        jar="/home/lacho/Desktop/bill_scanner/bill-scanner/app/libs/gson-2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="b0a0c970280e462eced181acdaa09c25cf782da6">
-        <dex dex="/home/lacho/Desktop/test/pesho/bill-scanner/app/build/intermediates/transforms/dex/debug/folders/1000/2/java-api-core-2.10.12_7bde899f6d312af091ec15a26ca002722d723684/classes.dex" />
+        sha1="2e66da15851f9f5b5079228f856c2f090ba98c38">
+        <dex dex="/home/lacho/Desktop/bill_scanner/bill-scanner/app/build/intermediates/transforms/dex/debug/folders/1000/2/gson-2.1_583c5057db3b42a73a69ed3ffab1082b36f46df8/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -75,6 +48,69 @@
     </item>
     <item
         is-multidex="true"
+        jar="/home/lacho/Desktop/bill_scanner/bill-scanner/app/libs/jackson-core-2.1.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f6c3aed1cdfa21b5c1737c915186ea93a95a58bd">
+        <dex dex="/home/lacho/Desktop/bill_scanner/bill-scanner/app/build/intermediates/transforms/dex/debug/folders/1000/2/jackson-core-2.1.3_77d7344f2a02033d5263009cf3ea9886c1a5500c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/lacho/Desktop/test/pesho/bill-scanner/app/libs/google-http-client-jackson2-1.19.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="81dbf9795d387d5e80e55346582d5f2fb81a42eb">
+        <dex dex="/home/lacho/Desktop/test/pesho/bill-scanner/app/build/intermediates/transforms/dex/debug/folders/1000/2/google-http-client-jackson2-1.19.0_069597324264c7d60155ae7e843164510380e383/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/lacho/Desktop/bill_scanner/bill-scanner/app/libs/guava-18.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="cce0823396aa693798f8882e64213b1772032b09">
+        <dex dex="/home/lacho/Desktop/bill_scanner/bill-scanner/app/build/intermediates/transforms/dex/debug/folders/1000/2/guava-18.0_9948d17695082e42e845199d3db1b6921946d366/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/lacho/Desktop/bill_scanner/bill-scanner/app/libs/google-http-client-jackson2-1.19.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="81dbf9795d387d5e80e55346582d5f2fb81a42eb">
+        <dex dex="/home/lacho/Desktop/bill_scanner/bill-scanner/app/build/intermediates/transforms/dex/debug/folders/1000/2/google-http-client-jackson2-1.19.0_84b9a993989315b9dec4b71e4534b52a25a1f802/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/lacho/Desktop/bill_scanner/bill-scanner/app/libs/google-http-client-android-1.19.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e3f11020c2c812112803d252d1392872d3f619c8">
+        <dex dex="/home/lacho/Desktop/bill_scanner/bill-scanner/app/build/intermediates/transforms/dex/debug/folders/1000/2/google-http-client-android-1.19.0_67ac06de103d06ccf0abc4be5fc10658a0f0141f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/lacho/Desktop/bill_scanner/bill-scanner/app/libs/google-http-client-1.19.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="cdca49ad0977c040f603478aa2e16b2775c8fec6">
+        <dex dex="/home/lacho/Desktop/bill_scanner/bill-scanner/app/build/intermediates/transforms/dex/debug/folders/1000/2/google-http-client-1.19.0_ba880df4d037a82c2b90b48bf63123325828cdee/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/lacho/Desktop/bill_scanner/bill-scanner/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="/home/lacho/Desktop/bill_scanner/bill-scanner/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_4c5b5ed9616331fbfce9a2c055e436ea2df52e5f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/home/lacho/Desktop/test/pesho/bill-scanner/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
@@ -93,12 +129,75 @@
     </item>
     <item
         is-multidex="true"
+        jar="/home/lacho/Desktop/bill_scanner/bill-scanner/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="637aecd2356a939f5be323bb3e6f969b42216adb">
+        <dex dex="/home/lacho/Desktop/bill_scanner/bill-scanner/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_b19f2d84aa6eac236019dc99b04d43fbbfb6f74e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/home/lacho/Desktop/test/pesho/bill-scanner/app/libs/google-http-client-android-1.19.0.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="e3f11020c2c812112803d252d1392872d3f619c8">
         <dex dex="/home/lacho/Desktop/test/pesho/bill-scanner/app/build/intermediates/transforms/dex/debug/folders/1000/2/google-http-client-android-1.19.0_c75ace052788d70bc6990d1aa0003e91b27e2970/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/lacho/Desktop/test/pesho/bill-scanner/app/libs/google-http-client-1.19.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="cdca49ad0977c040f603478aa2e16b2775c8fec6">
+        <dex dex="/home/lacho/Desktop/test/pesho/bill-scanner/app/build/intermediates/transforms/dex/debug/folders/1000/2/google-http-client-1.19.0_3c0af6012ec4a8bc147ec452df546e62a689966c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/lacho/Desktop/bill_scanner/bill-scanner/app/libs/java-api-core-2.10.12.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b0a0c970280e462eced181acdaa09c25cf782da6">
+        <dex dex="/home/lacho/Desktop/bill_scanner/bill-scanner/app/build/intermediates/transforms/dex/debug/folders/1000/2/java-api-core-2.10.12_9762f9b4f3d1def40023806275fa811dfa0ea9af/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/lacho/.android/build-cache/e008710cfdf0db86a8437cbfd5c59f9508f5cd9b/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8a23dd9b93757918e8f4f8f7382418c58a6cee22">
+        <dex dex="/home/lacho/Desktop/bill_scanner/bill-scanner/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ae24f4cc28698889a4583518512660f0c7e8c245/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/lacho/.android/build-cache/433f06913fa67aed22fa9e2854b29ad31965b55e/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8a23dd9b93757918e8f4f8f7382418c58a6cee22">
+        <dex dex="/home/lacho/Desktop/test/pesho/bill-scanner/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_205bc1f516438c5cf54480a4ca849f40b5f2ae1d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/lacho/Desktop/test/pesho/bill-scanner/app/libs/google-http-client-gson-1.19.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b3cdefb990d5212bb2a130525b20e2c44aeffc4c">
+        <dex dex="/home/lacho/Desktop/test/pesho/bill-scanner/app/build/intermediates/transforms/dex/debug/folders/1000/2/google-http-client-gson-1.19.0_aba5780ed466e87c1db7d00c95174ff914c95a13/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/lacho/Desktop/test/pesho/bill-scanner/app/libs/java-api-core-2.10.12.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b0a0c970280e462eced181acdaa09c25cf782da6">
+        <dex dex="/home/lacho/Desktop/test/pesho/bill-scanner/app/build/intermediates/transforms/dex/debug/folders/1000/2/java-api-core-2.10.12_7bde899f6d312af091ec15a26ca002722d723684/classes.dex" />
     </item>
 
 </items>
