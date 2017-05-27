@@ -29,6 +29,7 @@ import com.kinvey.java.User;
 import com.kinvey.java.auth.Credential;
 import com.kinvey.java.core.KinveyClientCallback;
 import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageActivity;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import org.json.JSONException;
@@ -42,6 +43,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
+
+import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,10 +61,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
-        Button ok = (Button) findViewById(R.id.ok);
-        ok.setVisibility(View.INVISIBLE);
+
+        findViewById(R.id.ok).setVisibility(View.INVISIBLE);
 
         mKinveyClient = new Client.Builder(getString(R.string.app_key),
                 getString(R.string.app_secret),
@@ -73,18 +77,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("", "Kinvey Ping Success");
             }
         });
-
-
-        //Intent login = new Intent(this, LoginActivity.class);
-       // startActivity(login);
-
-        RecordData recordData = new RecordData(mKinveyClient);
-
-        Map<String, String[]> products = new LinkedHashMap<>();
-        products.put("Apple", new String[] {"2", "3.50"});
-        products.put("Milk", new String[] {"1", "1.00"});
-        products.put("Mayo", new String[] {"5", "10.00"});
-        recordData.makeRecord("Billa", products, 14.50);
 
         textView = (TextView) findViewById(R.id.textArea);
 
@@ -129,24 +121,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        findViewById(R.id.ok).setVisibility(View.VISIBLE);
         image = (Bitmap) data.getExtras().get("data");
-
-        selectCropImage();
-
+        //selectCropImage();
         setAndOutputTess();
-        findViewById(R.id.cropImageView).setVisibility(View.GONE);
     }
 
     private void setAndOutputTess() {
         String ocrResult;
-
-        datapath  = getFilesDir() + "/tesseract/";
+        TessBaseAPI tessOCR = new TessBaseAPI();
+        datapath = getFilesDir() + "/tesseract/";
         checkFile(new File(datapath + "tessdata/"));
+        try {
+            tessOCR.init(datapath, language);
+            tessOCR.setImage(image);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        TessOCR tessOCR = new TessOCR(datapath, language);
-
-        ocrResult = tessOCR.getResult(image);
+        ocrResult = tessOCR.getUTF8Text();
 
         if (ocrResult == null) {
             textView.setText("Houston, we have a problem!");
@@ -154,21 +146,22 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(ocrResult);
         }
 
-        tessOCR.onDestroy();
+        tessOCR.clear();
     }
 
     private void selectCropImage() {
+        final Button ok = (Button) findViewById(R.id.ok);
+        ok.setVisibility(View.VISIBLE);
         final CropImageView cropImageView = (CropImageView) findViewById(R.id.cropImageView);
-        cropImageView.setVisibility(View.VISIBLE);
+
         cropImageView.setImageBitmap(image);
         cropImageView.setAutoZoomEnabled(false);
 
-        final Button ok = (Button) findViewById(R.id.ok);
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 image = cropImageView.getCroppedImage();
-                ok.setVisibility(View.INVISIBLE);
+                ok.setVisibility(View.GONE);
             }
         });
     }
