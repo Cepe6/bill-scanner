@@ -45,7 +45,7 @@ public class AccountActivity extends AppCompatActivity {
                         for (Map.Entry<String,String[]> stringEntry : bill.getProducts().entrySet()) {
                             billsOutput += "\n\t\t\t" + stringEntry.getKey() + " {\n\t\t\t\tamount: " + stringEntry.getValue()[0] + "\n\t\t\t\tprice: " + stringEntry.getValue()[1] + "\n\t\t\t}";
                         }
-                        billsOutput += "], \n\t\tprice: " +  bill.getTotalPrice() + "\n\t},";
+                        billsOutput += "\n\t\t], \n\t\tprice: " +  bill.getTotalPrice() + "\n\t},";
                     }
                 }
 
