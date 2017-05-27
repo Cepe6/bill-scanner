@@ -8,10 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-/**
- * Created by cepe6 on 26.05.17.
- */
-
 public class AccountActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,23 +23,5 @@ public class AccountActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        Button bills_btn = (Button) findViewById(R.id.get_bills_btn);
-        bills_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        Button avg_btn = (Button) findViewById(R.id.avg_btn);
-        avg_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
     }
-
-
 }

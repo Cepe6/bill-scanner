@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         ok.setVisibility(View.VISIBLE);
         //selectCropImage();
     }
-//
+
 //    private void selectCropImage() {
 //        final CropImageView cropImageView = (CropImageView) findViewById(R.id.cropImageView);
 //        cropImageView.setImageBitmap(image);
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
 //        ok.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                ImageView imageView = (ImageView) findViewById(R.id.picture);
+//                ImageView imageView = (ImageView) findViewById(R.id.imageview);
 //                imageView.setImageBitmap(cropImageView.getCroppedImage());
 //                ok.setVisibility(View.GONE);
 //            }
