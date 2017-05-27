@@ -142,10 +142,10 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.ok).setVisibility(View.VISIBLE);
         image = (Bitmap) data.getExtras().get("data");
 
-        selectCropImage();
+        //selectCropImage();
 
         setAndOutputTess();
-        findViewById(R.id.cropImageView).setVisibility(View.GONE);
+        //findViewById(R.id.cropImageView).setVisibility(View.GONE);
     }
 
     private void setAndOutputTess() {
@@ -154,9 +154,10 @@ public class MainActivity extends AppCompatActivity {
         datapath  = getFilesDir() + "/tesseract/";
         checkFile(new File(datapath + "tessdata/"));
 
-        TessOCR tessOCR = new TessOCR(datapath, language);
-
-        ocrResult = tessOCR.getResult(image);
+        TessBaseAPI tessOCR = new TessBaseAPI();
+        tessOCR.init(datapath, language);
+        tessOCR.setImage(image);
+        ocrResult = tessOCR.getUTF8Text();
 
         if (ocrResult == null) {
             textView.setText("Houston, we have a problem!");
@@ -164,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(ocrResult);
         }
 
-        tessOCR.onDestroy();
+        tessOCR.clear();
     }
 
     private void selectCropImage() {
