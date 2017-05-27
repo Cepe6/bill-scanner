@@ -23,12 +23,9 @@ public class AccountActivity extends AppCompatActivity {
         Log.i("Tag", "created");
         setContentView(R.layout.activity_account);
 
-        TextView username = (TextView) findViewById(R.id.username);
-        if(mKinveyClient.user().getUsername() == null) {
-            username.setText("Welcome, null");
-        } else {
-            username.setText("Welcome, " + mKinveyClient.user());
-        }
+        TextView usernameArea = (TextView) findViewById(R.id.username);
+        String username = getIntent().getStringExtra("username");
+        usernameArea.setText("Welcome, " + username);
 
         Log.i("Check", mKinveyClient.user().toString());
         AsyncAppData<Bill> events = mKinveyClient.appData("bills", Bill.class);

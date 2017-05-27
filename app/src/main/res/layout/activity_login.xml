@@ -22,8 +22,7 @@
         tools:layout_constraintTop_creator="1"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:onClick="tryLogin"/>
+        app:layout_constraintLeft_toLeftOf="parent"/>
 
     <EditText
         android:id="@+id/login_username"
