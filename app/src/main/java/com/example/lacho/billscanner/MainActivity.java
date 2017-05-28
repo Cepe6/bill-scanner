@@ -3,37 +3,19 @@ package com.example.lacho.billscanner;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
-import android.media.Image;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.lacho.billscanner.accounts.LoginActivity;
 import com.googlecode.tesseract.android.TessBaseAPI;
-import com.kinvey.android.AsyncAppData;
 import com.kinvey.android.Client;
 import com.kinvey.android.callback.KinveyPingCallback;
-import com.kinvey.android.callback.KinveyUserCallback;
-import com.kinvey.java.User;
-import com.kinvey.java.auth.Credential;
-import com.kinvey.java.core.KinveyClientCallback;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -58,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         if (mKinveyClient == null) {
             mKinveyClient = new Client.Builder(getString(R.string.app_key),
                     getString(R.string.app_secret),

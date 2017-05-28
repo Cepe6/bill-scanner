@@ -14,7 +14,11 @@ import com.example.lacho.billscanner.accounts.LoginActivity;
 import com.kinvey.android.AsyncAppData;
 import com.kinvey.android.Client;
 import com.kinvey.android.callback.KinveyListCallback;
+import com.kinvey.java.Query;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 public class AccountActivity extends AppCompatActivity {
@@ -43,7 +47,7 @@ public class AccountActivity extends AppCompatActivity {
                         billsOutput += "\n\t\t], \n\t\tprice: " +  bill.getTotalPrice() + "\n\t},";
                     }
                 }
-
+                billsOutput = billsOutput.substring(0, billsOutput.length() - 1);
                 billsOutput += "\n}";
                 printBills(billsOutput);
             }
@@ -54,6 +58,8 @@ public class AccountActivity extends AppCompatActivity {
             }
         });
 
+        monthPrice();
+
         Button home_btn = (Button) findViewById(R.id.home_btn);
         home_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +68,40 @@ public class AccountActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void monthPrice() {
+        AsyncAppData<Bill> events = MainActivity.mKinveyClient.appData("bills", Bill.class);
+        final DateFormat dateFormat = new SimpleDateFormat("MM");
+        final Date date = new Date();
+
+        events.get(new KinveyListCallback<Bill>() {
+            @Override
+            public void onSuccess(Bill[] bills) {
+                double monthMoney = 0;
+                for (Bill bill : bills) {
+                    if (bill.getMeta().get("ect").toString().contains("2017-" + dateFormat.format(date) + "-")) {
+                        if (bill.getOwnerID().equals(MainActivity.mKinveyClient.user().getId())) {
+                            monthMoney += bill.getTotalPrice();
+                        }
+                    }
+                }
+                monthMoney = Math.round(monthMoney * 100);
+                monthMoney /= 100;
+                printMonthMoney(monthMoney);
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                Log.v("Failure", "failed to recieve");
+            }
+        });
+    }
+
+    public void printMonthMoney(double monthMoney) {
+        Log.i("Month", Double.toString(monthMoney));
+        TextView total = (TextView) findViewById(R.id.totalMoney);
+        total.setText("Spend money for month: " + monthMoney);
     }
 
     public void printBills(String bills) {

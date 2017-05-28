@@ -27,4 +27,5 @@
     <string name="product_name">Product name</string>
     <string name="product_amount">Product amount</string>
     <string name="product_price">Product price</string>
+    <string name="spend_money_for_this_month">Spend money for this month</string>
 </resources>

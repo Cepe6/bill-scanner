@@ -29,7 +29,6 @@ public class Bill extends GenericJson { // For Serialization
     @Key("_acl")
     private KinveyMetaData.AccessControlList acl; //Kinvey access control, OPTIONAL
 
-
     public Bill() {}  //GenericJson classes must have a public empty constructor
 
     public void setBill(String bill) {
@@ -62,5 +61,9 @@ public class Bill extends GenericJson { // For Serialization
 
     public double getTotalPrice() {
         return totalPrice;
+    }
+
+    public KinveyMetaData getMeta() {
+        return meta;
     }
 }
