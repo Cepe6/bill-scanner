@@ -28,6 +28,8 @@
         </activity>
         <activity android:name=".accounts.RegisterActivity">
         </activity>
+        <activity android:name=".CustomBillActivity">
+        </activity>
     </application>
 
 </manifest>

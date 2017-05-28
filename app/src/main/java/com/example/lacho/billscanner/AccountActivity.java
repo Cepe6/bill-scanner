@@ -75,4 +75,6 @@ public class AccountActivity extends AppCompatActivity {
         MainActivity.mKinveyClient.user().logout().execute();
         startActivity(new Intent(this, LoginActivity.class));
     }
+
+
 }

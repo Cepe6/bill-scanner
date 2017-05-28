@@ -1,6 +1,7 @@
 package com.example.lacho.billscanner.accounts;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -32,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         if(usernameEdit == null || passwordEdit == null) {
             Log.e("ERROR", "Could not login");
         } else {
+            final MediaPlayer mp = MediaPlayer.create(this, R.raw.problem);
             final String username = usernameEdit.getText().toString();
             String password = passwordEdit.getText().toString();
             MainActivity.mKinveyClient.user().login(username, password, new KinveyUserCallback() {
@@ -46,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(Throwable throwable) {
                     Log.i("Failure", "Could not login");
+                    mp.start();
                     CharSequence text = "Houston, we have a problem!";
                     Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
                 }

@@ -116,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
+
     public void changeToAcc(View v) {
         Intent intent = new Intent(this, AccountActivity.class);
         startActivity(intent);
@@ -221,5 +222,17 @@ public class MainActivity extends AppCompatActivity {
         products.put("Milk", new String[] {"1", "1.00"});
         products.put("Mayo", new String[] {"5", "10.00"});
         recordData.makeRecord("Billa", products, 14.50, mKinveyClient.user().getId());
+    }
+
+    public void changeToUpload(View v) {
+        Intent intent = new Intent(this, CustomBillActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mKinveyClient.user().logout().execute();
+        mKinveyClient = null;
     }
 }

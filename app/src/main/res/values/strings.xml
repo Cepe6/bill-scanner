@@ -15,4 +15,16 @@
     <string name="name">Name</string>
     <string name="login">Login</string>
     <string name="new_picture">New picture</string>
+    <string name="bills_preview">Bills preview</string>
+    <string name="logout">Logout</string>
+    <string name="sign_in">Sign in</string>
+    <string name="user_password">Password</string>
+    <string name="account">Account</string>
+    <string name="new_bill">New Bill</string>
+    <string name="upload">Upload</string>
+    <string name="upload_custom_bill">Upload custom bill</string>
+    <string name="bill_name">Bill name</string>
+    <string name="product_name">Product name</string>
+    <string name="product_amount">Product amount</string>
+    <string name="product_price">Product price</string>
 </resources>
