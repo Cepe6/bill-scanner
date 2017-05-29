@@ -30,9 +30,12 @@ public class CustomBillActivity extends AppCompatActivity implements View.OnClic
     public void upload(String billName, String productName, int productAmount, double productPrice) {
         RecordData recordData = new RecordData(MainActivity.mKinveyClient);
 
-        Map<String, String[]> products = new LinkedHashMap<>();
-        products.put(productName, new String[] {Integer.toString(productAmount), Double.toString(productPrice)});
-        recordData.makeRecord(billName, products, productPrice * productAmount, MainActivity.mKinveyClient.user().getId());
+        recordData.makeRecord(billName,
+                productName,
+                productAmount,
+                productPrice,
+                productPrice * productAmount,
+                MainActivity.mKinveyClient.user().getId());
     }
 
     @Override

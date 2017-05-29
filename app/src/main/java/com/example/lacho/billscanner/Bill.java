@@ -21,7 +21,11 @@ public class Bill extends GenericJson { // For Serialization
     @Key
     private String ownerID;
     @Key
-    private Map<String, String[]> products;
+    private String product;
+    @Key
+    private int productAmount;
+    @Key
+    private double productPrice;
     @Key
     private double totalPrice;
     @Key("_kmd")
@@ -35,8 +39,8 @@ public class Bill extends GenericJson { // For Serialization
         this.bill = bill;
     }
 
-    public void setProducts(Map<String, String[]> products) {
-        this.products = products;
+    public void setProduct(String product) {
+        this.product = product;
     }
 
     public void setTotalPrice(double totalPrice) {
@@ -47,8 +51,24 @@ public class Bill extends GenericJson { // For Serialization
         return bill;
     }
 
-    public Map<String, String[]> getProducts() {
-        return products;
+    public String getProduct() {
+        return product;
+    }
+
+    public int getProductAmount() {
+        return productAmount;
+    }
+
+    public void setProductAmount(int productAmount) {
+        this.productAmount = productAmount;
+    }
+
+    public double getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(double productPrice) {
+        this.productPrice = productPrice;
     }
 
     public String getOwnerID() {

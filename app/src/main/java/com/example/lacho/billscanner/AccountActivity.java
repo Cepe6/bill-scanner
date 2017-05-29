@@ -7,7 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.lacho.billscanner.accounts.LoginActivity;
@@ -16,10 +18,17 @@ import com.kinvey.android.Client;
 import com.kinvey.android.callback.KinveyListCallback;
 import com.kinvey.java.Query;
 
+import java.sql.Array;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AccountActivity extends AppCompatActivity {
     @Override
@@ -37,6 +46,7 @@ public class AccountActivity extends AppCompatActivity {
         events.get(new KinveyListCallback<Bill>() {
             @Override
             public void onSuccess(Bill[] bills) {
+                /*
                 String billsOutput = "{\n ";
                 for (Bill bill : bills) {
                     if(bill.getOwnerID().equals(MainActivity.mKinveyClient.user().getId())) {
@@ -50,6 +60,29 @@ public class AccountActivity extends AppCompatActivity {
                 billsOutput = billsOutput.substring(0, billsOutput.length() - 1);
                 billsOutput += "\n}";
                 printBills(billsOutput);
+                */
+                List<String> products = new ArrayList<>();
+                String billString = "";
+                for (Bill bill : bills) {
+                    if(bill.getOwnerID().equals(MainActivity.mKinveyClient.user().getId())) {
+                        billString += "Bill name: " + bill.getBill() + " (total: " + bill.getTotalPrice() + " leva)"
+                                + "\nProduct name: " + bill.getProduct()
+                                + "\nProduct amount: " + bill.getProductAmount()
+                                + "\nProduct price: " + bill.getProductPrice()
+                                + "\nTotal: " + bill.getTotalPrice();
+
+                        Pattern p = Pattern.compile("([0-9]+-[0-9]+-[0-9]+).([0-9]+:[0-9]+)");
+                        Matcher m = p.matcher(bill.getMeta().get("ect").toString());
+Log.i("date", bill.getMeta().get("ect").toString());
+Log.i("date", Arrays.toString(bill.getMeta().get("ect").toString().split("([0-9]+-[0-9]+-[0-9]+).([0-9]+:[0-9]+)")));
+                        while (m.find()) {
+                            billString += "\nAdded on: " + m.group(1) + " " + m.group(2) + "\n";
+                        }
+
+                        products.add(billString);
+                    }
+                }
+                printBills(products);
             }
 
             @Override
@@ -104,11 +137,19 @@ public class AccountActivity extends AppCompatActivity {
         total.setText("Spend money for month: " + monthMoney);
     }
 
-    public void printBills(String bills) {
-        TextView billsArea = (TextView) findViewById(R.id.bills);
+    public void printBills(List<String> bills) {
+        ArrayAdapter<String> adapter;
 
-        billsArea.setMovementMethod(new ScrollingMovementMethod());
-        billsArea.setText(bills);
+            ListView listview=(ListView) findViewById(R.id.bills);
+
+            adapter = new ArrayAdapter<>(this, R.layout.bill_item, R.id.textView1, bills);
+            listview.setAdapter(adapter);
+
+
+        //TextView billsArea = (TextView) findViewById(R.id.bills);
+
+        //billsArea.setMovementMethod(new ScrollingMovementMethod());
+        //billsArea.setText(bills);
     }
 
     public void logout(View view) {

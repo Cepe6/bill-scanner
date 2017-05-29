@@ -16,10 +16,12 @@ public class RecordData {
         this.mKinveyClient = mKinveyClient;
     }
 
-    public void makeRecord(String bill, Map<String, String[]> products, Double totalPrice, String id) {
+    public void makeRecord(String bill, String product, int productAmount, double productPrice, Double totalPrice, String id) {
         Bill billObj = new Bill();
         billObj.setBill(bill);
-        billObj.setProducts(products);
+        billObj.setProduct(product);
+        billObj.setProductAmount(productAmount);
+        billObj.setProductPrice(productPrice);
         billObj.setTotalPrice(totalPrice);
         billObj.setOwnerID(id);
 
