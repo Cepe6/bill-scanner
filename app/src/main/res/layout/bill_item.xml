@@ -12,5 +12,6 @@
         android:text="Item"
         android:textColor="@color/customGreen"
         android:padding="10dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        style="?android:listSeparatorTextViewStyle"/>
 </RelativeLayout>

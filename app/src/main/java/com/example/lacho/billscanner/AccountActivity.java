@@ -73,8 +73,7 @@ public class AccountActivity extends AppCompatActivity {
 
                         Pattern p = Pattern.compile("([0-9]+-[0-9]+-[0-9]+).([0-9]+:[0-9]+)");
                         Matcher m = p.matcher(bill.getMeta().get("ect").toString());
-Log.i("date", bill.getMeta().get("ect").toString());
-Log.i("date", Arrays.toString(bill.getMeta().get("ect").toString().split("([0-9]+-[0-9]+-[0-9]+).([0-9]+:[0-9]+)")));
+
                         while (m.find()) {
                             billString += "\nAdded on: " + m.group(1) + " " + m.group(2) + "\n";
                         }
